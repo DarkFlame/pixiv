@@ -1,0 +1,9 @@
+config.js
+test.js
+demo.js
+node_modules/
+.vscode/
+*.log
+*.DS_Store
+log
+.idea
