@@ -19,13 +19,14 @@ export default context => {
           return component.preFetch(store)
         }
       })).then(() => {
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
-        // 暴露数据到HTMl，使得客户端渲染拿到数据，跟服务端渲染匹配
-        context.state = store.state
-        context.state.posts.forEach((element, index) => {
-          context.state.posts[index].content = '';
-        })
+         isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+        // // 暴露数据到HTMl，使得客户端渲染拿到数据，跟服务端渲染匹配
+        // context.state = store.state
+        // context.state.posts.forEach((element, index) => {
+        //   context.state.posts[index].content = '';
+        // })
         resolve(app)
+
       }).catch(reject)
     })
   })

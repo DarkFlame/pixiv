@@ -1,25 +1,30 @@
 <template>
   <div id="app">
+    <h1>HELLO WORLD</h1>
     <div class="wrap">
       <transition name="fade" mode="out-in">
         <!-- keep-alive排除article -->
-        <keep-alive exclude="article"> 
+        <keep-alive exclude="article">
           <router-view>
           </router-view>
         </keep-alive>
       </transition>
     </div>
     <footer class="footer">
-      <p>Copyright © <a href='https://github.com/BUPT-HJM'>BUPT-HJM</a>&nbsp;&nbsp;2017 </p>
-      <p>Created by <a href="https://github.com/BUPT-HJM/vue-blog.git">vue-blog</a></p>
+      <p>Created by Lawliet Yue</p>
     </footer>
   </div>
 </template>
 
 <script>
-
+    import {routerView,routerLink} from 'vue-router'
 export default {
-  name: 'app'
+    name: 'app',
+    created(){
+        if(typeof window == 'undefined') {
+            return;
+        }
+    }
 }
 </script>
 

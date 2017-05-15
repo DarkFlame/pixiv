@@ -1,10 +1,10 @@
-const devMiddleware = require('webpack-dev-middleware');
+const devMiddleware = require('webpack-dev-middleware')
 
 module.exports = (compiler, opts) => {
   const expressMiddleware = devMiddleware(compiler, opts)
-  let nextFlag = false;
+  let nextFlag = false
   function nextFn() {
-    nextFlag = true;
+    nextFlag = true
   }
   function devFn(ctx, next) {
     expressMiddleware(ctx.req, {
@@ -16,10 +16,10 @@ module.exports = (compiler, opts) => {
         }
       }, nextFn)
     if(nextFlag) {
-      nextFlag = false;
-      return next();
+      nextFlag = false
+      return next()
     }
   }
   devFn.fileSystem = expressMiddleware.fileSystem
-  return devFn;
+  return devFn
 }
