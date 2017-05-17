@@ -1,47 +1,26 @@
 import Vue from 'vue'
-import Login from '../components/login/login.vue'
-import App from '../App.vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
+Vue.use(Router)
 
-Vue.use(VueRouter)
+// route-level code splitting
+const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
+const ItemView = () => import('../views/ItemView.vue')
+const UserView = () => import('../views/UserView.vue')
 
-
-export function createRouter() {
-    let navigatorAction = false
-    const router = new VueRouter({
+export function createRouter () {
+    return new Router({
         mode: 'history',
-        scrollBehavior: (to,from,savedPosition) => {
-            if (to == from) {
-                navigatorAction = true
-            } else {
-                navigatorAction = false
-            }
-        },
+        scrollBehavior: () => ({ y: 0 }),
         routes: [
-            {
-                path: '/',
-                component: Login
-            },
-            {
-                path: '/login',
-                component: Login
-            }
+            { path: '/top/:page(\\d+)?', component: createListView('top') },
+            { path: '/new/:page(\\d+)?', component: createListView('new') },
+            { path: '/show/:page(\\d+)?', component: createListView('show') },
+            { path: '/ask/:page(\\d+)?', component: createListView('ask') },
+            { path: '/job/:page(\\d+)?', component: createListView('job') },
+            { path: '/item/:id(\\d+)', component: ItemView },
+            { path: '/user/:id', component: UserView },
+            { path: '/', redirect: '/top' }
         ]
     })
-    if (typeof window !== "undefined") {
-        router.afterEach((to,from) => {
-            setTimeout(() => {
-                if (navigatorAction) {
-                    return;
-                }
-                if (document && to.meta.scrollToTop) {
-                    console.log(to)
-                    console.log("回到顶部")
-                    document.body.scrollTop = 0
-                }
-            },200)
-        })
-    }
-    return router
 }

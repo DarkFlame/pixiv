@@ -3,9 +3,7 @@ import {createStore} from './store'
 import {createRouter} from './router'
 import {firebaseObj} from './store/models'
 import {sync} from 'vuex-router-sync'
-// import ElementUI from 'element-ui'
 import App from './App.vue'
-Vue.use(require('element-ui'))
 // // 解决移动端300ms延迟问题
 // if (typeof window !== "undefined") {
 //   const Fastclick = require('fastclick')

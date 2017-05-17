@@ -15,7 +15,6 @@ import {createBundleRenderer} from 'vue-server-renderer'
 const isProd = process.env.NODE_ENV === 'production'
 import api from './server/api';
 function createRenderer(bundle,template) {
-    console.log('createRender run')
     return createBundleRenderer(bundle,{
         template,
         cache: require('lru-cache')({
@@ -69,12 +68,12 @@ if (isProd) {
 
 // 流式渲染
 router.get('*',async (ctx,next) => {
-    console.log(111)
     let res = ctx.res
     let req = ctx.req
     // 由于koa内有处理type，此处需要额外修改content-type
     const s = Date.now()
     let context = {url: req.url}
+    console.log('请求',context)
     function renderToStringPromise() {
         return new Promise((resolve,reject) => {
             renderer.renderToString(context,(err,html) => {
@@ -92,13 +91,9 @@ router.get('*',async (ctx,next) => {
     ctx.type='html'
     ctx.body = await renderToStringPromise()
 })
-app.use(routerInfo.routes())
 
+app.use(routerInfo.routes()).use(router.allowedMethods());
 app.use(router.routes()).use(router.allowedMethods());
 
-// create server
-app.listen(8866, () => {
-    console.log('The server is running at http://localhost:' + '8866');
-});
 
 export default app

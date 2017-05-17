@@ -11,6 +11,7 @@ const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
 
 let config = merge(base, {
+    target: 'web', // <=== can be om
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         // 开启全局的模块热替换(HMR)

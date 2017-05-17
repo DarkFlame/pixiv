@@ -14,6 +14,9 @@ let config = merge(base, {
         libraryTarget: 'commonjs2'
     },
     resolve: {
+        alias: {
+            'create-api': './create-api-server.js'
+        }
     },
     externals: nodeExternals({
         // 之前是通过读取package.json
