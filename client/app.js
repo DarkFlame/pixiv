@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {createStore} from './store'
 import {createRouter} from './router'
-import {firebaseObj} from './store/models'
+// import {firebaseObj} from './store/models'
 import {sync} from 'vuex-router-sync'
 import App from './App.vue'
 // // 解决移动端300ms延迟问题
@@ -31,7 +31,6 @@ export function createApp(ssrContext) {
     }
 
     const app = new Vue({
-        ...firebaseObj,
         router,
         store,
         ssrContext,

@@ -5,9 +5,8 @@ const logRequests = !!process.env.DEBUG_API
 
 const api = createAPI({
   version: '/v0',
-  config: {
-    databaseURL: 'https://hacker-news.firebaseio.com'
-  }
+  // config: require('./firebase.config.json')
+  config: require('./firebase.config.json')
 })
 
 // warm the front page cache every 15 min

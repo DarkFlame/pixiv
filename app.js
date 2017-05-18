@@ -58,9 +58,9 @@ if (isProd) {
 } else {
     // 开发环境下使用hot/dev middleware拿到bundle与template
     require('./build/setup-dev-server')(app,(bundle,template) => {
-        try{
+        try {
             renderer = createRenderer(bundle,template)
-        }catch (err){
+        } catch (err) {
             console.log(renderer)
         }
     })
@@ -88,7 +88,8 @@ router.get('*',async (ctx,next) => {
             })
         })
     }
-    ctx.type='html'
+
+    ctx.type = 'html'
     ctx.body = await renderToStringPromise()
 })
 
