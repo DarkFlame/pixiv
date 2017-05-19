@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
+import recommend from './modules/recommend'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -11,7 +12,9 @@ const debug = process.env.NODE_ENV !== 'production'
 const store = new Vuex.Store({
   actions,
   getters,
-  modules: {},
+  modules: {
+    recommend
+  },
   mutations,
   strict: debug,
   plugins: debug ? [createLogger({
@@ -20,16 +23,16 @@ const store = new Vuex.Store({
 })
 
 if (module.hot) {
-  // 使 actions 和 mutations 成为可热重载模块
-  module.hot.accept(['./mutations'],() => {
-    // 获取更新后的模块
-    // 因为 babel 6 的模块编译格式问题，这里需要加上 .default
-    const newMutations = require('./mutations').default
-    // 加载新模块
-    store.hotUpdate({
-      mutations: newMutations
-    })
-  })
+  // // 使 actions 和 mutations 成为可热重载模块
+  // module.hot.accept(['./mutations'],() => {
+  //   // 获取更新后的模块
+  //   // 因为 babel 6 的模块编译格式问题，这里需要加上 .default
+  //   const newMutations = require('./mutations').default
+  //   // 加载新模块
+  //   store.hotUpdate({
+  //     mutations: newMutations
+  //   })
+  // })
 }
 export default store
 

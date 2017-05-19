@@ -1,11 +1,12 @@
 
 import Router from 'koa-router';
-import {test,create} from './recommend.ctrl';
-let router = Router();
-
+import {test,pages} from './recommend.ctrl';
+let router = Router({
+  prefix:'/api/recommend'
+});
 
 router.get('/test', test);
-router.post('/create', create);
+router.get('/pages', pages);
 
 
 export default router;

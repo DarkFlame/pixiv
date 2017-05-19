@@ -14,7 +14,7 @@ import path from 'path'
 
 const app = new Koa()
 
-// app.use(serve(config.fileDir))
+app.use(serve(config.fileDir))
 /**
  * /
  body解析

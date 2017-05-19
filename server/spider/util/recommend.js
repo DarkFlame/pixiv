@@ -51,7 +51,8 @@ export default class DownloadRecommend {
       if (typeof imgUrl !== 'string') {
         reject(new TypeError('Expected a string'))
       }
-      if (!fs.existsSync(output)) {
+      let outputResolvePath = path.resolve(config.fileDir,output)
+      if (fs.existsSync(outputResolvePath)) {
         console.log(` img ${imgUrl} exists ************* ${output}`)
         return resolve()
       }
@@ -66,7 +67,7 @@ export default class DownloadRecommend {
       })
         .then(function (response) {
           console.log(`download img from ${imgUrl} ==========> ${output}`)
-          response.data.pipe(fs.createWriteStream(path.resolve(config.fileDir,output)))
+          response.data.pipe(fs.createWriteStream(outputResolvePath))
           resolve(output)
         })
     })

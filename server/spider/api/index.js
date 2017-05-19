@@ -13,8 +13,3 @@ export default class PixivApi {
     return this.pixiv.illustRecommendedNologin()
   }
 }
-
-if (require.main === module) {
-
-
-}

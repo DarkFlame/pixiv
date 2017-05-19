@@ -1,5 +1,5 @@
-import {Recommend} from '../../models'
-
+import {IllustsRecommendedNologin} from '../../models'
+import {wrapBody} from '../../util/index'
 export async function test(ctx) {
   let data = null;
   let error = null;
@@ -18,18 +18,12 @@ export async function test(ctx) {
   };
 }
 
-export async function create(ctx){
+export async function pages(ctx) {
   let data = null;
-  let error = null;
   try {
-    data = await Recommend.create({
-      a:1
-    })
-  } catch (ex) {
-
+    data = await IllustsRecommendedNologin.find({})
+  } catch (e) {
+    ctx.body = wrapBody(e)
   }
-  ctx.body = {
-    status: 'E0',
-    data
-  };
+  ctx.body = wrapBody(null,data)
 }

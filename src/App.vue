@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <a href="/" class="_icon sprites-logo">pixiv</a>
+    <router-link to="/recommend">热门推荐</router-link>
     <!--<img src="./assets/logo.png">-->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+  import {
+    routerView,
+    routerLink
+  } from 'vue-router'
 export default {
   name: 'app'
 }
