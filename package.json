@@ -8,6 +8,7 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "startServer": "nodemon --exec babel-node -- bin/pixtv.js",
+    "testapi": "babel-node ./server/spider/util/recommend",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
@@ -15,6 +16,8 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.16.1",
+    "cron": "^1.2.1",
     "element-ui": "^1.3.3",
     "koa": "^2.2.0",
     "koa-body": "^2.0.1",
@@ -25,6 +28,7 @@
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
     "mongoose": "^4.10.0",
+    "pixiv-app-api": "^0.10.0",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1",

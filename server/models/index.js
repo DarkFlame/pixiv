@@ -13,6 +13,6 @@ export default mongoose.connect(config.mongodb.url,{
     console.log(err)
   }
 })
-export {default as Recommend} from './recommend'
+export {default as IllustsRecommendedNologin} from './illusts_recommended_nologin'
 
 
