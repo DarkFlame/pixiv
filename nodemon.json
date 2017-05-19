@@ -1,0 +1,17 @@
+{
+  "ext": "js json",
+  "exec": "babel-node -- server/app.js",
+  "ignore": [
+    "localtest/*",
+    "node_modules",
+    "README.md",
+    "config",
+    "build",
+    "src",
+    "static",
+    "test"
+  ],
+  "execMap": {
+     "js": "./node_modules/.bin/babel-node"
+  }
+}

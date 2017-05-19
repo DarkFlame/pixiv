@@ -1,6 +1,14 @@
 {
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "stage-2"
+  ],
   "plugins": [
-    "syntax-dynamic-import",
     "transform-async-to-generator",
     [
       "transform-es2015-modules-commonjs",
@@ -15,26 +23,17 @@
         "regenerator": true
       }
     ],
-    [
-      "transform-object-rest-spread",
-      {
-        "useBuiltIns": true
-      }
-    ],
-    [
-      "component",
-      [
-        {
-          "libraryName": "element-ui",
-          "styleLibraryName": "theme-default"
-        }
-      ]
-    ]
+    "transform-object-rest-spread"
   ],
+  "comments": false,
   "env": {
-    "production": {
+    "test": {
+      "presets": [
+        "env",
+        "stage-2"
+      ],
       "plugins": [
-        "transform-remove-console"
+        "istanbul"
       ]
     }
   }
