@@ -3,6 +3,7 @@ import convert from 'koa-convert'
 import error from 'koa-error'
 import cors from 'koa-cors'
 import config from './config'
+import clientConfig from '../config'
 import router from './router'
 import koaBody from 'koa-body'
 import logger from 'koa-logger'
@@ -11,13 +12,10 @@ import http from 'http'
 import serve from 'koa-static'
 import path from 'path'
 
-
 const app = new Koa()
 
-app.use(serve(config.fileDir))
 /**
- * /
- body解析
+ * body解析
  */
 // app.use(convert(koaBody({
 //   formidable: {
@@ -62,6 +60,11 @@ if (config.env == 'development') {
 }
 
 router(app)
+/**
+ * 把webpack build好的文件设置为koa的静态文件目录 实现生产环境下的前后端端口一致
+ */
+
+app.use(serve(clientConfig.build.assetsRoot))
 
 module.exports = function createServerApp(){
   console.log(config)

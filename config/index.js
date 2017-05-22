@@ -31,19 +31,8 @@ var env = {
         target: 'http://localhost:9988',
         changeOrigin: true
       }
-      ,
-      // '/i.pximg.net': {
-      //   target: 'https://i.pximg.net/',
-      //   changeOrigin: true,
-      //   pathRewrite: function (path,req) {
-      //     console.log(path)
-      //     return path.replace('/i.pximg.net','')
-      //   },
-      //   headers: {
-      //     Referer: 'http://www.pixiv.net/'
-      //   }
-      // }
     },
+    proxyPixtvTable:['https://i.pximg.net','https://i3.pixiv.net','https://i1.pixiv.net','https://i2.pixiv.net'],
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
@@ -52,10 +41,9 @@ var env = {
     cssSourceMap: false
   }
 }
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && env.dev.proxyPixtvTable) {
   //代理所有请求图片的接口 加上referer
-  let proxyPixtvTable = ['https://i.pximg.net','https://i3.pixiv.net','https://i1.pixiv.net','https://i2.pixiv.net']
-  proxyPixtvTable.forEach((item) => {
+  env.dev.proxyPixtvTable.forEach((item) => {
     env.dev.proxyTable['/' + item] = {
       target: item,
       changeOrigin: true,
@@ -70,4 +58,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-module.exports = env;
+module.exports = env

@@ -1,7 +1,11 @@
+import {
+  join
+} from 'path';
+
 let config = {
-  env: 'production',
+  env: 'development',
   mongodb: {
-    url: 'mongodb://192.168.10.42/webapi'
+    url: 'mongodb://192.168.10.42/pixtv'
   },
   allowOrigins: ["http://localhost:9102","http://192.168.10.42:9102","http://localhost:63342","http://localhost:8080","http://localhost:9020"],
   port: 9988,
@@ -10,7 +14,7 @@ let config = {
   logDir: join(__dirname,'../../logs'),
   logLevel: 'info',
   poolSize: 200,
-  apiTimeout: 10000
+  apiTimeout: 60000
 };
 
 

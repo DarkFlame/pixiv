@@ -3752,6 +3752,10 @@ koa-static@^3.0.0:
     debug "*"
     koa-send "^3.2.0"
 
+koa2-connect@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/koa2-connect/download/koa2-connect-1.0.2.tgz#cf196d70a4e6a055f717522768d26cdfc5396f7b"
+
 koa@^2.2.0:
   version "2.2.0"
   resolved "http://registry.npm.taobao.org/koa/download/koa-2.2.0.tgz#b055933187849d540ad8b9f731baaa4be97c652d"
