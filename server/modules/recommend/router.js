@@ -5,6 +5,7 @@ let router = Router({
   prefix:'/api/recommend'
 });
 
+
 router.get('/test', test);
 router.get('/pages', pages);
 

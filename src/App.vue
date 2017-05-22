@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <a href="/" class="_icon sprites-logo">pixiv</a>
     <router-link to="/recommend">热门推荐</router-link>
+    <router-link to="/" class="_icon sprites-logo"></router-link>
     <!--<img src="./assets/logo.png">-->
     <router-view></router-view>
   </div>

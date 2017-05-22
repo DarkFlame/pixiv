@@ -1,6 +1,8 @@
 <template>
-    <div>
-      asdasd
+    <div >
+      <h1 v-for="item in recommendList">
+        <img v-bind:src="'/'+ item.imageUrls.squareMedium"/>
+      </h1>
     </div>
 
 
@@ -35,3 +37,20 @@
         }
     }
 </script>
+<style lang="stylus" scoped>
+  .date-link {
+    padding 10px 0
+    a {
+      font-size .9rem
+    }
+  }
+  .date-after {
+    float right
+  }
+  .fetch-day {
+    display block
+    margin 10px 0
+    cursor pointer
+    font-size 14px
+  }
+</style>

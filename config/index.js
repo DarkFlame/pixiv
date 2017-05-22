@@ -1,11 +1,10 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-
-module.exports = {
+var env = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    index: path.resolve(__dirname,'../dist/index.html'),
+    assetsRoot: path.resolve(__dirname,'../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: true,
@@ -14,7 +13,7 @@ module.exports = {
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
-    productionGzipExtensions: ['js', 'css'],
+    productionGzipExtensions: ['js','css'],
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
     // `npm run build --report`
@@ -28,10 +27,22 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api':{
+      '/api': {
         target: 'http://localhost:9988',
         changeOrigin: true
       }
+      ,
+      // '/i.pximg.net': {
+      //   target: 'https://i.pximg.net/',
+      //   changeOrigin: true,
+      //   pathRewrite: function (path,req) {
+      //     console.log(path)
+      //     return path.replace('/i.pximg.net','')
+      //   },
+      //   headers: {
+      //     Referer: 'http://www.pixiv.net/'
+      //   }
+      // }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
@@ -41,3 +52,22 @@ module.exports = {
     cssSourceMap: false
   }
 }
+if (process.env.NODE_ENV !== 'production') {
+  //代理所有请求图片的接口 加上referer
+  let proxyPixtvTable = ['https://i.pximg.net','https://i3.pixiv.net','https://i1.pixiv.net','https://i2.pixiv.net']
+  proxyPixtvTable.forEach((item) => {
+    env.dev.proxyTable['/' + item] = {
+      target: item,
+      changeOrigin: true,
+      pathRewrite: function (path,req) {
+        return path.replace('/' + item,'')
+      },
+      headers: {
+        Referer: 'http://www.pixiv.net/'
+      }
+    }
+  })
+}
+
+
+module.exports = env;
