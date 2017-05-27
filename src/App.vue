@@ -1,44 +1,62 @@
 <template>
   <div id="app">
-    <!--<router-link to="/recommend">热门推荐</router-link>-->
-    <!--<router-link to="/" class="_icon sprites-logo"></router-link>-->
-    <!--<img src="./assets/logo.png">-->
-    <router-view></router-view>
+    <PHeader></PHeader>
+    <div id="wrapper">
+      <div class="layout-body">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import PHeader from './components/common/header.vue'
   import {
     routerView,
     routerLink
   } from 'vue-router'
-export default {
-  name: 'app'
-}
+  export default {
+    name: 'app',
+    components: {
+      PHeader
+    }
+  }
 </script>
 
-<style>
-  @import "../re";
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="stylus">
+  @import "./assets/static/global.styl"
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #2c3e50;
+  }
 
-._icon, .rss a {
-  display: inline-block;
-  overflow: hidden;
-  text-indent: -999px;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-.sprites-logo {
-  background-position: 0 -1535px;
-  height: 50px;
-  width: 130px;
-  background-image: url(./assets/sprites-s30f7c00f21.png);
-  background-repeat: no-repeat;
-}
+  ._icon, .rss a {
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -999px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .sprites-logo {
+    background-position: 0 -1535px;
+    height: 50px;
+    width: 130px;
+    background-image: url(./assets/sprites-s30f7c00f21.png);
+    background-repeat: no-repeat;
+  }
+
+  .layout-body {
+    width: 970px;
+    margin: 0 auto;
+  }
+
+  #wrapper {
+    margin: 0 auto 0;
+    width: 100%;
+    background-color: #e4e7ee;
+  }
 </style>

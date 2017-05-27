@@ -12,4 +12,7 @@ export default class PixivApi {
   illustRecommendedNologin() {
     return this.pixiv.illustRecommendedNologin()
   }
+  searchIllust(keywords) {
+    return this.pixiv.searchIllust(keywords)
+  }
 }

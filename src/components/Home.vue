@@ -1,12 +1,11 @@
 <template>
   <div>
-    <PHeader>
-    </PHeader>
+
   </div>
 </template>
 
 <script>
-  import PHeader from './common/header.vue'
+  import PHeader from '@/components/common/header'
   export default {
     name: 'home',
     data () {

@@ -6,42 +6,92 @@
       </h1>
       <nav class="navigation-list">
         <ul>
-          <li class="home"><a href="/" class="current"><i class="_icon sprites-home"></i>首页</a></li>
+          <li class="home">
+            <router-link to="/" class="current">
+              <i class="_icon sprites-home"></i>首页
+
+
+
+            </router-link>
+          </li>
+          <li class="home">
+            <router-link to="/recommend" class="current">
+              <i class="_icon  sprites-stacc"></i>推荐
+
+
+
+            </router-link>
+          </li>
+          <li class="home">
+            <router-link to="/search" class="current">
+              <i class="_icon  sprites-bookmarks"></i>关键词搜索
+
+
+
+            </router-link>
+          </li>
         </ul>
       </nav>
-
-
-      <nav class="category-list ">
-        <ul>
-          <li><a href="/novel" class="header-novel js-click-trackable-later" data-click-category="header-menu-ref"
-                 data-click-action="novel" data-click-label="/index.php"><i class="_icon sprites-novel"></i>小说</a></li>
-          <li><a href="https://www.pixiv.net/event.php" class="header-event js-click-trackable-later"
-                 data-click-category="header-menu-ref" data-click-action="event" data-click-label="/index.php"><i
-            class="_icon sprites-event"></i>活动</a></li>
-
-        </ul>
+      <nav class="navigation-search">
+        <el-input
+          placeholder="搜索关键词"
+          icon="search"
+          v-model="keywords"
+          :on-icon-click="getSearchIllust">
+        </el-input>
       </nav>
-      <form id="suggest-container" autocomplete="off" method="get" class="ui-search" action="/search.php">
-        <input type="hidden" name="s_mode" value="s_tag">
-        <div class="container"><input type="text" id="suggest-input" name="word" value="" placeholder="搜索"></div>
-      </form>
     </div>
   </header>
 </template>
 
 <script>
-  export default {}
+
+  import {
+    mapState,
+    mapGetters,
+    mapActions
+  } from 'vuex'
+
+  export default {
+    computed: {
+      ...mapGetters({
+        searchIllust: 'searchIllust'
+      }),
+      keywords: {
+        get(){
+          return this.$store.state.header.keywords
+        },
+        set(val){
+          this.$store.dispatch('setKeywords',val)
+        }
+      }
+    },
+    methods: {
+      ...mapActions({
+        getSearchIllust:'getSearchIllust'
+      })
+    }
+  }
 </script>
+
 <style lang="stylus">
   ._global-header {
     background-color: #fff;
     border-bottom: 1px solid #d6dee5;
-
+    .title {
+      position: absolute;
+      top: 12px;
+    }
     .layout-wrapper {
       position: relative;
       width: 970px;
       height: 115px;
       margin: 0 auto;
+    }
+    .navigation-search {
+      position: absolute;
+      right: 8px;
+      bottom: 0px;
     }
 
     .navigation-list {
@@ -56,6 +106,36 @@
         position: relative;
         padding-left: 24px;
         margin-right: 16px;
+        ._icon {
+          position: absolute;
+          left: 0;
+          top: 0px;
+        }
+        a.current {
+          font-weight: bold;
+          color: inherit;
+        }
+        .sprites-home {
+          background-image: url(../../assets/sprites-s30f7c00f21.png);
+          background-repeat: no-repeat;
+          background-position: 0 -1162px;
+          height: 20px;
+          width: 20px;
+        }
+        .sprites-stacc {
+          background-image: url(../../assets/sprites-s30f7c00f21.png);
+          background-repeat: no-repeat;
+          background-position: 0 -2279px;
+          height: 20px;
+          width: 20px;
+        }
+        .sprites-bookmarks {
+          background-image: url(../../assets/sprites-s30f7c00f21.png);
+          background-repeat: no-repeat;
+          background-position: 0 -82px;
+          height: 20px;
+          width: 20px;
+        }
       }
 
     }

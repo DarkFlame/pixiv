@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import recommend from './modules/recommend'
+import header from './modules/header'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
   actions,
   getters,
   modules: {
-    recommend
+    recommend,
+    header
   },
   mutations,
   strict: debug,
