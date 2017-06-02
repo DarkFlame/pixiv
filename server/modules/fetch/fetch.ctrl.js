@@ -1,15 +1,12 @@
 // import {IllustsRecommendedNologin} from '../../models'
 import {wrapBody} from '../../util/index'
 import pixiv from '../../spider/api/index'
-
-export async function searchKeywords(ctx) {
+export async function fetchByUrl(ctx) {
   let data = null;
-  let {keywords} = ctx.params
-  let {bookmark} = ctx.request.query
+  console.log(ctx.request)
+  let {url} = ctx.request.body
   try {
-    data = await pixiv.searchIllust({keywords,bookmark},{
-      offset:10
-    })
+    data = await pixiv.fetch(url)
   } catch (e) {
     ctx.body = wrapBody(e)
   }

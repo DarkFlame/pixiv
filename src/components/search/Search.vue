@@ -1,12 +1,27 @@
 <template>
   <div>
-    <section class="column-search-result">
+    <el-tabs v-model="bookmark" type="card" @tab-click="getSearchIllust">
+      <el-tab-pane label="全部" name="0" ></el-tab-pane>
+      <el-tab-pane label="10000" name="10000"></el-tab-pane>
+      <el-tab-pane label="5000" name="5000"></el-tab-pane>
+      <el-tab-pane label="1000" name="1000"></el-tab-pane>
+      <el-tab-pane label="500" name="500"></el-tab-pane>
+      <el-tab-pane label="300" name="300"></el-tab-pane>
+      <el-tab-pane label="100" name="100"></el-tab-pane>
+      <el-tab-pane label="50" name="50"></el-tab-pane>
+
+    </el-tabs>
+    <section  class="column-search-result" v-p-scroll="getSearchNextIllust">
+
       <ul class="_image-items autopagerize_page_element">
         <li v-for="item in searchIllust.illusts" class="image-item">
           <img class="image-container" :src="'/' + item.imageUrls.squareMedium">
         </li>
       </ul>
+      <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
     </section>
+
+    <!--<el-button :plain="true" >打开消息提示</el-button>-->
   </div>
 </template>
 
@@ -23,8 +38,28 @@
   export default{
     computed: {
       ...mapGetters({
-        searchIllust: 'searchIllust'
-      })
+        searchIllust: 'searchIllust',
+        bookmark: 'bookmark'
+      }),
+      bookmark:{
+        get(){
+          return this.$store.state.search.bookmark
+        },
+        set(val){
+          this.$store.dispatch('setBookmark',val)
+        }
+      }
+
+    },
+    methods: {
+      ...mapActions({
+        getSearchIllust:'getSearchIllust'
+      }),
+      getSearchNextIllust() {
+        this.$store.dispatch('getSearchNextIllust').then(res=>{
+            if(res && !res.nextUrl) this.$message({message:'已经显示全部图片',duration:4000})
+        })
+      }
     }
   }
 </script>
@@ -50,5 +85,12 @@
         height: 360px;
       }
     }
+      ._no-item{
+        margin: 250px 0;
+        color: #000;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+      }
   }
 </style>

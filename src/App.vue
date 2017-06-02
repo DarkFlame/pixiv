@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <PHeader></PHeader>
-    <div id="wrapper">
-      <div class="layout-body">
+    <div id="wrapper"  >
+      <div class="layout-body" >
         <router-view></router-view>
       </div>
     </div>
@@ -58,5 +58,7 @@
     margin: 0 auto 0;
     width: 100%;
     background-color: #e4e7ee;
+    min-height 960px
+
   }
 </style>

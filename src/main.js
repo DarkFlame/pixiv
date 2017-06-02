@@ -7,7 +7,7 @@ import store from './store'
 import { sync } from 'vuex-router-sync'
 import ElementUI from 'element-ui'
 import Axios from 'axios'
-
+import './directive/p-scroll'
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 Vue.prototype.$http = Axios

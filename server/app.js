@@ -17,12 +17,12 @@ const app = new Koa()
 /**
  * body解析
  */
-// app.use(convert(koaBody({
-//   formidable: {
-//     uploadDir: config.uploadDir
-//   },
-//   multipart: true
-// })))
+app.use(convert(koaBody({
+  formidable: {
+    uploadDir: config.uploadDir
+  },
+  multipart: true
+})))
 /**
  *跨域支持
  */

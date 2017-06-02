@@ -1,7 +1,7 @@
 import PixivAppApi from 'pixiv-app-api'
-import util from 'util'
-export default class PixivApi {
+class PixivApi {
   constructor() {
+    this.BOOKMARK_SUFFIX = 'users入り'
     this.pixiv = new PixivAppApi()
   }
 
@@ -12,7 +12,18 @@ export default class PixivApi {
   illustRecommendedNologin() {
     return this.pixiv.illustRecommendedNologin()
   }
-  searchIllust(keywords) {
-    return this.pixiv.searchIllust(keywords)
+
+  searchIllust({keywords,bookmark},params) {
+    let key = !Number(bookmark) ? keywords : keywords + ' ' + bookmark + this.BOOKMARK_SUFFIX;
+    console.log(key)
+    return this.pixiv.searchIllust(key,params)
+  }
+
+  fetch(target,params) {
+    return this.pixiv.fetch(target,{params})
   }
 }
+
+export default (function () {
+  return new PixivApi();
+})()
