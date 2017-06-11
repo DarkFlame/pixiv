@@ -1,15 +1,14 @@
-import PixivApi from '../api/index'
-import util from 'util'
+import pixiv from '../api/index'
+import moment from 'moment'
 import fs from 'fs'
-import config from '../../config'
 import path from 'path'
+import config from '../../config'
 import axios from 'axios'
 import {IllustsRecommendedNologin} from '../../models'
-const pixiv = new PixivApi()
 
 export default class DownloadRecommend {
   constructor() {
-    this.init()
+    this.init().then(err=>{console.log(err)})
   }
 
   async init() {
@@ -37,12 +36,7 @@ export default class DownloadRecommend {
 
   create(model) {
     return IllustsRecommendedNologin.create(model)
-    // return new Promise((resolve) => {
-    //   IllustsRecommendedNologin.insertMany(models,((err,res) => {
-    //     console.log(err)
-    //     if (!err) resolve()
-    //   }))
-    // })
+
   }
 
   downloadImg(imgUrl,output) {
@@ -51,9 +45,14 @@ export default class DownloadRecommend {
       if (typeof imgUrl !== 'string') {
         reject(new TypeError('Expected a string'))
       }
-      let outputResolvePath = path.resolve(config.fileDir,output)
+      let currentDate = moment().format('YYYY-MM-DD')
+      let outputResolveDir = path.join(config.fileDir,currentDate)
+      if(!fs.existsSync(outputResolveDir)) fs.mkdirSync(outputResolveDir)
+      let outputResolvePath = path.join(outputResolveDir,output)
+      let outRelativePath = path.join(currentDate,output)
+      console.log(outRelativePath)
       if (fs.existsSync(outputResolvePath)) {
-        console.log(` img ${imgUrl} exists ************* ${output}`)
+        console.log(` img ${imgUrl} exists ************* ${outRelativePath}`)
         return resolve()
       }
       axios({
@@ -66,9 +65,9 @@ export default class DownloadRecommend {
         responseType: 'stream'
       })
         .then(function (response) {
-          console.log(`download img from ${imgUrl} ==========> ${output}`)
+          console.log(`download img from ${imgUrl} ==========> ${outRelativePath}`)
           response.data.pipe(fs.createWriteStream(outputResolvePath))
-          resolve(output)
+          resolve(outRelativePath)
         })
     })
   }

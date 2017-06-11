@@ -1,7 +1,7 @@
 <template>
     <div >
       <h1 v-for="item in recommendList">
-        <img v-bind:src="'/'+ item.imageUrls.squareMedium"/>
+        <img v-bind:src="'/'+ item.imageUrls.large"/>
       </h1>
     </div>
 

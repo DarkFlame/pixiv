@@ -5,7 +5,7 @@ import {
 let config = {
     env: 'development',
     mongodb: {
-        url: 'mongodb://192.168.10.42/pixtv'
+        url: 'mongodb://127.0.0.1/pixtv'
     },
     allowOrigins: ["http://localhost:9102","http://192.168.10.42:9102","http://localhost:63342","http://localhost:8080","http://localhost:9020"],
     port: 9988,
