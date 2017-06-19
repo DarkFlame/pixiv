@@ -67,9 +67,12 @@
       }
     },
     methods: {
-      ...mapActions({
-        getSearchIllust:'getSearchIllust'
-      })
+
+        getSearchIllust(){
+            this.$store.dispatch('getSearchIllust').then(()=>{
+                this.$router.push('/search')
+            })
+      }
     }
   }
 </script>

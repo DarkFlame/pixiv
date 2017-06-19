@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Recommend from '@/components/recommend/Recommend'
-import Search from '@/components/search/Search'
-
+// import Home from ''
+// import Recommend from ''
+// import Search from '@/components/search/Search'
+const Home = r => require.ensure([], () => r(require('@/components/Home')), 'test1')
+const Recommend = r => require.ensure([], () => r(require('@/components/recommend/Recommend')), 'test1')
+const Search = r => require.ensure([], () => r(require('@/components/search/Search')), 'test1')
 Vue.use(Router)
 
 export default new Router({

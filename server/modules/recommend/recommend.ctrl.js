@@ -1,5 +1,6 @@
 import {IllustsRecommendedNologin} from '../../models'
 import {wrapBody} from '../../util/index'
+import moment from 'moment'
 export async function test(ctx) {
   let data = null;
   let error = null;
@@ -21,7 +22,15 @@ export async function test(ctx) {
 export async function pages(ctx) {
   let data = null;
   try {
-    data = await IllustsRecommendedNologin.find({})
+    let {date} = ctx.request.query
+    let today = moment(date)
+    let tomorrow = moment(today).add(1,'days')
+    data = await IllustsRecommendedNologin.find({
+      updateDate: {
+        $gte: today.toDate(),
+        $lte: tomorrow.toDate(),
+      }
+    })
   } catch (e) {
     ctx.body = wrapBody(e)
   }

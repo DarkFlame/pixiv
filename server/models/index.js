@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import config from '../config'
 mongoose.Promise = global.Promise
-
+mongoose.set('debug', true)
 export default mongoose.connect(config.mongodb.url,{
   server: {
     auto_reconnect: true,
