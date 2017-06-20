@@ -26,7 +26,7 @@
     mapGetters,
     mapActions
   } from 'vuex'
-  import PCard from '../common/p-card'
+  import PCard from '@/components/common/p-card'
 
   export default{
     created(){

@@ -15,7 +15,8 @@
 
       <ul class="_image-items autopagerize_page_element">
         <li v-for="item in searchIllust.illusts" class="image-item">
-          <img class="image-container" :src="'/' + item.imageUrls.squareMedium">
+          <PCard class="image-container" v-bind:url="item.imageUrls.squareMedium"></PCard>
+          <!--<img class="image-container" :src="'/' + item.imageUrls.squareMedium">-->
         </li>
       </ul>
       <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
@@ -30,12 +31,16 @@
     routerView,
     routerLink
   } from 'vue-router'
+  import PCard from '@/components/common/p-card'
   import {
     mapState,
     mapGetters,
     mapActions
   } from 'vuex'
   export default{
+    components: {
+      PCard
+    },
     computed: {
       ...mapGetters({
         searchIllust: 'searchIllust',
