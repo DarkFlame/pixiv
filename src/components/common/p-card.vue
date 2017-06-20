@@ -1,40 +1,28 @@
 <template>
+  <img v-bind:src="'/'+ url"/>
 
 </template>
 
 <script>
 
-  import {
-    mapState,
-    mapGetters,
-    mapActions
-  } from 'vuex'
 
   export default {
-    computed: {
-      ...mapGetters({
-        searchIllust: 'searchIllust'
-      }),
-      keywords: {
-        get(){
-          return this.$store.state.header.keywords
-        },
-        set(val){
-          this.$store.dispatch('setKeywords',val)
-        }
-      }
+    name: 'PCard',
+    props: {
+      url: {
+        type: String
+      },
     },
-    methods: {
-      ...mapActions({
-        getSearchIllust:'getSearchIllust'
-      })
+    data: function () {
+      return {}
     }
   }
 </script>
 
 <style lang="stylus">
 
-
 </style>
+
+
 
 

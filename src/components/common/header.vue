@@ -12,6 +12,7 @@
 
 
 
+
             </router-link>
           </li>
           <li class="home">
@@ -20,11 +21,13 @@
 
 
 
+
             </router-link>
           </li>
           <li class="home">
             <router-link to="/search" class="current">
               <i class="_icon  sprites-bookmarks"></i>关键词搜索
+
 
 
 
@@ -53,6 +56,7 @@
   } from 'vuex'
 
   export default {
+    name: 'PHeader',
     computed: {
       ...mapGetters({
         searchIllust: 'searchIllust'
@@ -68,10 +72,10 @@
     },
     methods: {
 
-        getSearchIllust(){
-            this.$store.dispatch('getSearchIllust').then(()=>{
-                this.$router.push('/search')
-            })
+      getSearchIllust(){
+        this.$store.dispatch('getSearchIllust').then(() => {
+          this.$router.push('/search')
+        })
       }
     }
   }

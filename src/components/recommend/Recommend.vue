@@ -8,7 +8,7 @@
       :picker-options="recommendDateOptions">
     </el-date-picker>
     <h1 v-for="item in recommendList">
-      <img v-bind:src="'/'+ item.imageUrls.large"/>
+      <PCard v-bind:url="item.imageUrls.large"></PCard>
     </h1>
   </div>
 
@@ -20,14 +20,20 @@
     routerView,
     routerLink
   } from 'vue-router'
+  import Vue from 'vue'
   import {
     mapState,
     mapGetters,
     mapActions
   } from 'vuex'
+  import PCard from '../common/p-card'
+
   export default{
     created(){
       this.getRecommendList()
+    },
+    components: {
+      PCard
     },
     data(){
       return {
@@ -38,21 +44,21 @@
           shortcuts: [{
             text: '今天',
             onClick(picker) {
-              picker.$emit('pick', new Date());
+              picker.$emit('pick',new Date());
             }
-          }, {
+          },{
             text: '昨天',
             onClick(picker) {
               const date = new Date();
               date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit('pick', date);
+              picker.$emit('pick',date);
             }
-          }, {
+          },{
             text: '一周前',
             onClick(picker) {
               const date = new Date();
               date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', date);
+              picker.$emit('pick',date);
             }
           }]
         }

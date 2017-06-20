@@ -1,17 +1,21 @@
 import Vue from 'vue'
 import {throttle} from 'lodash'
 
+let EventCallback = function (cb) {
+  return throttle((e) => {
+    console.log('getNextUrl')
+    if ((document.body.scrollTop + window.innerHeight) / document.body.scrollHeight > 0.8) {
+      cb()
+    }
+  },1500)
+}
 
-
-Vue.directive('p-scroll', {
-  bind: function (el, binding, vnode) {
-    window.addEventListener('scroll',throttle((e)=>{
-
-      if((document.body.scrollTop + window.innerHeight)/document.body.scrollHeight > 0.8) {
-        binding.value()
-      }
-    },1000))
+Vue.directive('p-scroll',{
+  bind: function (el,binding) {
+    el.handler = EventCallback(binding.value)
+    window.addEventListener('scroll',el.handler)
   },
-  unbind:function(){
+  unbind: function (el,binding) {
+    window.removeEventListener('scroll',el.handler)
   }
 })
