@@ -15,14 +15,12 @@
 
       <ul class="_image-items autopagerize_page_element">
         <li v-for="item in searchIllust.illusts" class="image-item">
-          <PCard class="image-container" :purl="item.imageUrls.squareMedium"></PCard>
-          <!--<img class="image-container" :src="'/' + item.imageUrls.squareMedium">-->
+          <p-card class="image-container" :purl="item.imageUrls.squareMedium"></p-card>
         </li>
       </ul>
       <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
     </section>
 
-    <!--<el-button :plain="true" >打开消息提示</el-button>-->
   </div>
 </template>
 
@@ -31,7 +29,7 @@
     routerView,
     routerLink
   } from 'vue-router'
-  import PCard from '@/components/common/PCard'
+  import PCard from '@/components/common/p-card'
   import {
     mapState,
     mapGetters,

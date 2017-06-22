@@ -9,8 +9,8 @@
     </el-date-picker>
     <div class="re_container">
       <div class="re_card_container" v-for="item in recommendList">
-        <PCard class="card" :pid="item.id" :pauthor="item.user.name" :pauthorId="item.user.id" :ptitle="item.title"
-               :purl="item.imageUrls.squareMedium"></PCard>
+        <p-card class="card" :pid="item.id" :pauthor="item.user.name" :pauthorId="item.user.id" :ptitle="item.title"
+               :purl="item.imageUrls.squareMedium"></p-card>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
     mapGetters,
     mapActions
   } from 'vuex'
-  import PCard from '@/components/common/PCard'
+  import PCard from '@/components/common/p-card'
 
   export default{
     created(){

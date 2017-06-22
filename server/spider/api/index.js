@@ -25,6 +25,9 @@ class PixivApi {
   illustDetail(id) {
     return this.pixiv.illustDetail(id)
   }
+  illustBookmarkDetail(id) {
+    return this.pixiv.illustBookmarkDetail(id)
+  }
 }
 
 export default (function () {

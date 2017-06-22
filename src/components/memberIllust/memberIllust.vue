@@ -1,8 +1,8 @@
 <template>
   <div>
-    <PCard class="card" :pid="memberIllust.id" :pauthor="memberIllust.user.account"
+    <p-card class="card" :pid="memberIllust.id" :pauthor="memberIllust.user.account"
            :pauthorId="memberIllust.user.id" :ptitle="memberIllust.title"
-           :purl="memberIllust.metaSinglePage.originalImageUrl"></PCard>
+           :purl="memberIllust.metaSinglePage.originalImageUrl"></p-card>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
     routerView,
     routerLink
   } from 'vue-router'
-  import PCard from '@/components/common/pCard'
+  import PCard from '@/components/common/p-card'
   import {
     mapState,
     mapGetters,
