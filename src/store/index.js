@@ -5,6 +5,7 @@ import * as getters from './getters'
 import recommend from './modules/recommend'
 import header from './modules/header'
 import search from './modules/search'
+import memberIllust from './modules/memberIllust'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
   modules: {
     recommend,
     header,
-    search
+    search,
+    memberIllust
   },
   mutations,
   strict: debug,

@@ -22,6 +22,9 @@ class PixivApi {
   fetch(target,params) {
     return this.pixiv.fetch(target,{params})
   }
+  illustDetail(id) {
+    return this.pixiv.illustDetail(id)
+  }
 }
 
 export default (function () {

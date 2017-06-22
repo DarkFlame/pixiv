@@ -6,6 +6,7 @@ import Router from 'vue-router'
 const Home = r => require.ensure([], () => r(require('@/components/Home')), 'test1')
 const Recommend = r => require.ensure([], () => r(require('@/components/recommend/Recommend')), 'test1')
 const Search = r => require.ensure([], () => r(require('@/components/search/Search')), 'test1')
+const MemberIllust = r => require.ensure([], () => r(require('@/components/memberIllust/MemberIllust')), 'test1')
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +23,10 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
+    },{
+      path: '/memberIllust/:pid',
+      name: 'memberIllust',
+      component: MemberIllust
     }
   ]
 })

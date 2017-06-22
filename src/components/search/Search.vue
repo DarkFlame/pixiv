@@ -15,7 +15,7 @@
 
       <ul class="_image-items autopagerize_page_element">
         <li v-for="item in searchIllust.illusts" class="image-item">
-          <PCard class="image-container" v-bind:url="item.imageUrls.squareMedium"></PCard>
+          <PCard class="image-container" :purl="item.imageUrls.squareMedium"></PCard>
           <!--<img class="image-container" :src="'/' + item.imageUrls.squareMedium">-->
         </li>
       </ul>
@@ -31,7 +31,7 @@
     routerView,
     routerLink
   } from 'vue-router'
-  import PCard from '@/components/common/p-card'
+  import PCard from '@/components/common/PCard'
   import {
     mapState,
     mapGetters,

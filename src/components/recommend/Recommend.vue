@@ -7,9 +7,13 @@
       placeholder="选择日期"
       :picker-options="recommendDateOptions">
     </el-date-picker>
-    <h1 v-for="item in recommendList">
-      <PCard v-bind:url="item.imageUrls.large"></PCard>
-    </h1>
+    <div class="re_container">
+      <div class="re_card_container" v-for="item in recommendList">
+        <PCard class="card" :pid="item.id" :pauthor="item.user.name" :pauthorId="item.user.id" :ptitle="item.title"
+               :purl="item.imageUrls.squareMedium"></PCard>
+      </div>
+    </div>
+
   </div>
 
 
@@ -26,7 +30,7 @@
     mapGetters,
     mapActions
   } from 'vuex'
-  import PCard from '@/components/common/p-card'
+  import PCard from '@/components/common/PCard'
 
   export default{
     created(){
@@ -85,6 +89,16 @@
   }
 </script>
 <style lang="stylus" scoped>
+  .re_container
+    padding 10px 0
+  .re_card_container {
+    position relative
+    .card {
+      width 50%
+      float left
+    }
+  }
+
   .date-link {
     padding 10px 0
     a {

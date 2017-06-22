@@ -12,3 +12,13 @@ export async function fetchByUrl(ctx) {
   }
   ctx.body = wrapBody(null,data)
 }
+export async function fetchById(ctx) {
+  let data = null;
+  let {id} = ctx.params
+  try {
+    data = await pixiv.illustDetail(id)
+  } catch (e) {
+    ctx.body = wrapBody(e)
+  }
+  ctx.body = wrapBody(null,data && data.illust)
+}
