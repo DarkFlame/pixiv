@@ -98,7 +98,11 @@
       float left
     }
   }
-
+  .re_container:after {
+    clear: both;
+    display: table;
+    content: "";
+  }
   .date-link {
     padding 10px 0
     a {

@@ -20,7 +20,7 @@
   import PImg from '@/components/common/p-img'
   export default {
     name: 'PCard',
-    components:{
+    components: {
       PImg
     },
     props: {
@@ -34,7 +34,7 @@
         type: Number
       },
       pid: {
-        type: String
+        type: [String,Number]
       },
       ptitle: {
         type: String

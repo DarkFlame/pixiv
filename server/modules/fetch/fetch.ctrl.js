@@ -42,8 +42,11 @@ export async function illustBookmarkDetail(ctx) {
   let data = null;
   let {id} = ctx.params
   try {
+    console.log(id)
     data = await pixiv.illustBookmarkDetail(id)
+    console.log(data)
   } catch (e) {
+    console.log(e)
     ctx.body = wrapBody(e)
   }
   ctx.body = wrapBody(null,data && data.illust)

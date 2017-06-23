@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div v-if="memberIllust">
     <p-card class="card" :pid="memberIllust.id" :pauthor="memberIllust.user.account"
-           :pauthorId="memberIllust.user.id" :ptitle="memberIllust.title"
-           :purl="memberIllust.metaSinglePage.originalImageUrl"></p-card>
+            :pauthorId="memberIllust.user.id" :ptitle="memberIllust.title"
+            :purl="memberIllust.metaSinglePage.originalImageUrl"></p-card>
   </div>
 </template>
 
@@ -18,7 +18,11 @@
     mapActions
   } from 'vuex'
   export default{
+    beforeCreate(){
+      console.log(this.getMemberIllust)
+    },
     created(){
+      console.log(this.getMemberIllust)
       this.getMemberIllust(this.$route.params.pid)
     },
     components: {
