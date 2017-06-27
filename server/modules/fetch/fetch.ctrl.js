@@ -49,7 +49,61 @@ export async function illustBookmarkDetail(ctx) {
     console.log(e)
     ctx.body = wrapBody(e)
   }
-  ctx.body = wrapBody(null,data && data.illust)
+  ctx.body = wrapBody(null,data)
+}
+/**
+ * 根据用户id查询用户详情
+ * @param ctx
+ * @return {Promise.<void>}
+ */
+export async function userDetail(ctx) {
+  let data = null;
+  let {id} = ctx.params
+  try {
+    console.log(id)
+    data = await pixiv.userDetail(id)
+    console.log(data)
+  } catch (e) {
+    console.log(e)
+    ctx.body = wrapBody(e)
+  }
+  ctx.body = wrapBody(null,data)
+}
+/**
+ * 根据用户id查询作品详情
+ * @param ctx
+ * @return {Promise.<void>}
+ */
+export async function userIllusts(ctx) {
+  let data = null;
+  let {id} = ctx.params
+  try {
+    console.log(id)
+    data = await pixiv.userIllusts(id)
+    console.log(data)
+  } catch (e) {
+    console.log(e)
+    ctx.body = wrapBody(e)
+  }
+  ctx.body = wrapBody(null,data)
+}
+/**
+ *
+ * @param ctx
+ * @return {Promise.<void>}
+ */
+export async function illustRelated(ctx) {
+  let data = null;
+  let {id} = ctx.params
+  try {
+    console.log(id)
+    data = await pixiv.illustRelated(id)
+    console.log(data)
+  } catch (e) {
+    console.log(e)
+    ctx.body = wrapBody(e)
+  }
+  ctx.body = wrapBody(null,data)
 }
 
 

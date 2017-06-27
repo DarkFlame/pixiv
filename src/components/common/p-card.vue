@@ -1,10 +1,10 @@
 <template>
   <div>
     <p-img :purl="purl"></p-img>
-    <router-link v-if="pid" :to="'/memberIllust/'+pid">
+    <router-link v-if="pid && pauthorId" :to="'/member/' + pauthorId +  '/Illust/'+ pid">
       <h1 class="title" :title="ptitle">{{ptitle}}</h1>
     </router-link>
-    <router-link v-if="pauthor" to="/">
+    <router-link v-if="pauthor" :to="'/member/' + pauthorId + '/list'">
       <h1 class="title" :title="pauthor">{{pauthor}}</h1>
     </router-link>
   </div>
@@ -31,7 +31,7 @@
         type: String
       },
       pauthorId: {
-        type: Number
+        type: [String,Number]
       },
       pid: {
         type: [String,Number]

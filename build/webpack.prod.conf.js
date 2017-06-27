@@ -120,5 +120,5 @@ if (config.build.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
-
+console.log(require('util').inspect(webpackConfig,true,null,true))
 module.exports = webpackConfig

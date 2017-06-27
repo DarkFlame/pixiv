@@ -16,6 +16,9 @@ const actions = {
     return axios.get(`/api/fetchById/${payload}`).then(({data}) => {
       commit(types.SET_MEMBER_ILLUST,data.data)
     })
+  },
+  setMemberIllust({commit},payload){
+    commit(types.SET_MEMBER_ILLUST,payload)
   }
 }
 

@@ -32,7 +32,14 @@ var env = {
         changeOrigin: true
       }
     },
-    proxyPixtvTable:['https://i.pximg.net','https://i3.pixiv.net','https://i1.pixiv.net','https://i2.pixiv.net'],
+    proxyPixtvTable: [
+      'https://i.pximg.net',
+      'https://i3.pixiv.net',
+      'https://i1.pixiv.net',
+      'https://i2.pixiv.net',
+      'https://i4.pixiv.net',
+      'https://source.pixiv.net'
+    ],
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

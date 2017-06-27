@@ -59,6 +59,6 @@
     width: 100%;
     background-color: #e4e7ee;
     min-height 960px
-
+    overflow scroll
   }
 </style>

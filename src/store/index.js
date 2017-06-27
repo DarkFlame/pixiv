@@ -6,6 +6,7 @@ import recommend from './modules/recommend'
 import header from './modules/header'
 import search from './modules/search'
 import memberIllust from './modules/memberIllust'
+import memberUser from './modules/memberUser'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
     recommend,
     header,
     search,
+    memberUser,
     memberIllust
   },
   mutations,
