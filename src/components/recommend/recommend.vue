@@ -9,9 +9,14 @@
     </el-date-picker>
     <div class="re_container">
       <div class="re_card_container" v-for="item in recommendList">
-        <p-card class="card" :pid="item.id" :pauthor="item.user.name"
-                :pauthorId="item.user.id" :ptitle="item.title"
-               :purl="item.imageUrls.squareMedium"></p-card>
+        <p-card class="card"
+                :pid="item.id"
+                :pauthor="item.user.name"
+                :pauthorId="item.user.id"
+                :ptitle="item.title"
+                :purl="item.imageUrls.squareMedium">
+
+        </p-card>
       </div>
     </div>
 
@@ -90,20 +95,7 @@
   }
 </script>
 <style lang="stylus" scoped>
-  .re_container
-    padding 10px 0
-  .re_card_container {
-    position relative
-    .card {
-      width 50%
-      float left
-    }
-  }
-  .re_container:after {
-    clear: both;
-    display: table;
-    content: "";
-  }
+
   .date-link {
     padding 10px 0
     a {

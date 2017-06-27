@@ -7,6 +7,7 @@ import header from './modules/header'
 import search from './modules/search'
 import memberIllust from './modules/memberIllust'
 import memberUser from './modules/memberUser'
+import memberList from './modules/memberList'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -21,6 +22,7 @@ const store = new Vuex.Store({
     header,
     search,
     memberUser,
+    memberList,
     memberIllust
   },
   mutations,

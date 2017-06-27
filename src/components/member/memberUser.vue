@@ -14,7 +14,11 @@
       </div>
     </div>
     <div class="layout-column-2">
-      <router-view></router-view>
+      <el-tabs v-model="memberActiveTab" type="card" @tab-click="memberRedirect">
+        <el-tab-pane v-for="item in memberTabList" :label="item.name" :name="item.id"></el-tab-pane>
+      </el-tabs>
+      <router-view>
+      </router-view>
     </div>
   </div>
 
@@ -33,6 +37,9 @@
     mapActions
   } from 'vuex'
   export default{
+    data(){
+      return {}
+    },
     beforeCreate(){
     },
     created(){
@@ -44,9 +51,14 @@
     computed: {
       ...mapGetters({
         memberUser: 'memberUser',
+        memberTabList: 'memberTabList',
+        memberActiveTab: 'memberActiveTab',
       })
     },
     methods: {
+      memberRedirect(){
+
+      },
       ...mapActions({
         getMemberUser: 'getMemberUser'
       })

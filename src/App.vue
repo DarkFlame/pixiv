@@ -25,6 +25,7 @@
 
 <style lang="stylus">
   @import "./assets/static/global.styl"
+  @import "./assets/static/card.styl"
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
