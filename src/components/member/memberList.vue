@@ -44,8 +44,12 @@
     },
     methods: {
       ...mapActions({
-        'getMemberList': 'getMemberList'
+        'getMemberList': 'getMemberList',
+        'setMemberList': 'setMemberList'
       })
+    },
+    beforeDestroy(){
+      this.setMemberList(null)
     }
   }
 </script>

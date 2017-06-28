@@ -18,14 +18,12 @@ const state = {
     id: 'dynamic'
   },],
   memberUser: null,
-  memberActiveTab: 'list',
 }
 
 // getters
 const getters = {
   memberUser: state => state.memberUser,
   memberTabList: state => state.memberTabList,
-  memberActiveTab: state => state.memberActiveTab
 }
 
 // actions
@@ -35,19 +33,15 @@ const actions = {
       commit(types.SET_MEMBER_USER,data.data)
     })
   },
-  setMemberActiveTab({commit},payload){
-      commit(types.SET_MEMBER_ACTIVE_TAB,payload)
-  },
-
+  setMemberUser({commit},payload){
+      commit(types.SET_MEMBER_USER,payload)
+  }
 }
 
 // mutations
 const mutations = {
   [types.SET_MEMBER_USER](state,payload){
     state.memberUser = payload
-  },
-  [types.SET_MEMBER_ACTIVE_TAB](state,payload){
-    state.memberActiveTab = payload
   }
 }
 

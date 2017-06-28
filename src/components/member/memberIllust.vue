@@ -1,20 +1,38 @@
 <template>
   <div class="" v-if="memberIllust">
-    <div class="ill-work">
-      <div class="ill-thumbnail">
-        <!--<el-tooltip effect="dark" content="点击下载图片" placement="right-start">-->
+    <div>
+      <div class="ill-work">
+        <div class="ill-thumbnail">
+          <!--<el-tooltip effect="dark" content="点击下载图片" placement="right-start">-->
           <p-img
             :purl="memberIllust.imageUrls.large">
           </p-img>
-        <!--</el-tooltip>-->
+          <!--</el-tooltip>-->
+        </div>
       </div>
+      <a class="ill-download" @click="downloadImgById(memberIllust.id)">
+        下载原图
+      </a>
     </div>
 
+    <section v-if="illustRelatedList && illustRelatedList.illusts" class="ill-recommend" >
+      <div class="re_container">
+        <h1>推荐</h1>
+        <div class="re_card_container" v-for="item in illustRelatedList.illusts">
+          <p-card class="card"
+                  :pid="item.id"
+                  :pauthor="item.user.name"
+                  :pauthorId="item.user.id"
+                  :ptitle="item.title"
+                  :purl="item.imageUrls.squareMedium">
+          </p-card>
+        </div>
+      </div>
 
-    <a class="ill-download" @click="downloadImgById(memberIllust.id)">
-      下载原图
-    </a>
+    </section>
+
   </div>
+
 
 </template>
 
@@ -35,8 +53,11 @@
     beforeCreate(){
     },
     created(){
-      this.getMemberIllust(this.$route.params.pid)
+      let pid = this.$route.params.pid
+      this.getMemberIllust(pid)
+      this.getIllustRelated(pid)
     },
+  
     components: {
       PCard,
       PImg
@@ -44,11 +65,13 @@
     computed: {
       ...mapGetters({
         memberIllust: 'memberIllust',
+        illustRelatedList: 'illustRelatedList',
       })
     },
     methods: {
       ...mapActions({
         getMemberIllust: 'getMemberIllust',
+        getIllustRelated: 'getIllustRelated',
         setMemberIllust: 'setMemberIllust',
       }),
       downloadImgById(){
@@ -74,6 +97,10 @@
   .ill-work {
     position relative
   }
+
+    .ill-recommend{
+      padding 100px 0 0 0
+    }
 
   .ill-thumbnail:before {
     background: url(../../assets/thumbnail-depth-large.png) repeat-x 0 0;

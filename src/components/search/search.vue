@@ -12,12 +12,23 @@
 
     </el-tabs>
     <section  class="column-search-result" v-p-scroll="getSearchNextIllust">
+      <div class="re_container">
+        <div class="re_card_container" v-for="item in searchIllust.illusts">
+          <p-card class="card"
+                  :pid="item.id"
+                  :pauthor="item.user.name"
+                  :pauthorId="item.user.id"
+                  :ptitle="item.title"
+                  :purl="item.imageUrls.squareMedium">
 
-      <ul class="_image-items autopagerize_page_element">
-        <li v-for="item in searchIllust.illusts" class="image-item">
-          <p-card class="image-container" :purl="item.imageUrls.squareMedium"></p-card>
-        </li>
-      </ul>
+          </p-card>
+        </div>
+      </div>
+      <!--<ul class="_image-items autopagerize_page_element">-->
+        <!--<li v-for="item in searchIllust.illusts" class="image-item">-->
+          <!--<p-card class="image-container" :purl="item.imageUrls.squareMedium"></p-card>-->
+        <!--</li>-->
+      <!--</ul>-->
       <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
     </section>
 

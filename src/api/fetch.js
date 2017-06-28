@@ -26,6 +26,11 @@ export default {
       cancelToken: source.token
     })
   } ,
+  getIllustRelated(imgId){
+    return axios.get(`/api/illustRelated/${imgId}`,{
+      cancelToken: source.token
+    })
+  } ,
   downloadImgById(imgId){
     return axios.get(`/api/download/${imgId}`,{
       responseType: "blob",

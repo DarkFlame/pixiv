@@ -56,10 +56,12 @@
     },
     watch: {
       '$route'(to,from) {
+        //监听路由 设置tab的memberActiveTab值
         this.setMemberActiveTab(to)
       }
     },
     created(){
+      //初始化左侧用户信息 和 tab
       this.getMemberUser(this.$route.params.userid)
       this.setMemberActiveTab(this.$route)
     },
@@ -84,8 +86,12 @@
         this.$router.push(item.getUrl(userid))
       },
       ...mapActions({
-        getMemberUser: 'getMemberUser'
+        getMemberUser: 'getMemberUser',
+        setMemberUser: 'setMemberUser'
       })
+    },
+    beforeDestroy(){
+        this.setMemberUser(null)
     }
   }
 </script>
