@@ -1,5 +1,6 @@
 <template>
-  <div v-if="memberList">
+
+  <div class="re_container" v-if="memberList">
     <div class="re_card_container" v-for="item in memberList.illusts">
       <p-card class="card"
               :pid="item.id"

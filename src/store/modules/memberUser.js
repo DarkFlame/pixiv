@@ -4,10 +4,12 @@ import axios from 'axios'
 const state = {
   memberTabList: [{
     name: '个人资料',
-    id: 'list'
+    id: 'detail',
+    getUrl: (userId) => `/member/${userId}/detail`
   },{
     name: '作品',
-    id: 'illust'
+    id: 'list',
+    getUrl: (userId) => `/member/${userId}/list`
   },{
     name: '收藏',
     id: 'bookmark'
@@ -32,13 +34,20 @@ const actions = {
     return axios.get(`/api/userDetail/${payload}`).then(({data}) => {
       commit(types.SET_MEMBER_USER,data.data)
     })
-  }
+  },
+  setMemberActiveTab({commit},payload){
+      commit(types.SET_MEMBER_ACTIVE_TAB,payload)
+  },
+
 }
 
 // mutations
 const mutations = {
   [types.SET_MEMBER_USER](state,payload){
     state.memberUser = payload
+  },
+  [types.SET_MEMBER_ACTIVE_TAB](state,payload){
+    state.memberActiveTab = payload
   }
 }
 

@@ -30,6 +30,7 @@
     "koa-static": "^3.0.0",
     "koa2-connect": "^1.0.2",
     "lodash": "^4.17.4",
+    "mime-types": "^2.1.15",
     "moment": "^2.18.1",
     "mongoose": "^4.10.0",
     "pixiv-app-api": "^0.10.0",

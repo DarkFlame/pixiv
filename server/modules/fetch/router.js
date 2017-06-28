@@ -5,6 +5,7 @@ import {
   illustBookmarkDetail,
   userDetail,
   illustRelated,
+  downloadImgById,
   userIllusts
 } from './fetch.ctrl'
 let router = Router({
@@ -18,6 +19,7 @@ router.get('/illustBookmarkDetail/:id',illustBookmarkDetail)
 router.get('/userDetail/:id',userDetail)
 router.get('/userIllusts/:id',userIllusts)
 router.get('/illustRelated/:id',illustRelated)
+router.get('/download/:id',downloadImgById)
 
 
 export default router

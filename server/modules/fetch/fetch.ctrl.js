@@ -1,6 +1,8 @@
 // import {IllustsRecommendedNologin} from '../../models'
 import {wrapBody} from '../../util/index'
+import {basename} from 'path'
 import pixiv from '../../spider/api/index'
+import fetchService from './fetch.service'
 /**
  * 根据url查询
  * @param ctx
@@ -104,6 +106,25 @@ export async function illustRelated(ctx) {
     ctx.body = wrapBody(e)
   }
   ctx.body = wrapBody(null,data)
+}
+/**
+ * 根据图片id 下载图片的流
+ * @param ctx
+ * @return {Promise.<void>}
+ */
+export async function downloadImgById(ctx) {
+  let stream = null;
+  let {id} = ctx.params
+  try {
+    let imgInfo = await pixiv.illustDetail(id);
+    let imgUrl = fetchService.getOriginalUrl(imgInfo)
+    stream = await pixiv.getImgStreamByUrl(imgUrl)
+    ctx.attachment(basename(imgUrl))
+  } catch (e) {
+    console.log(e)
+    ctx.body = wrapBody(e)
+  }
+  ctx.body = stream
 }
 
 

@@ -14,11 +14,23 @@
       </div>
     </div>
     <div class="layout-column-2">
-      <el-tabs v-model="memberActiveTab" type="card" @tab-click="memberRedirect">
-        <el-tab-pane v-for="item in memberTabList" :label="item.name" :name="item.id"></el-tab-pane>
+      <el-tabs class="no-bottom-border"
+               v-model="memberActiveTab"
+               type="border-card"
+               @tab-click="memberRedirect"
+      >
+        <el-tab-pane v-for="({id,name},index) in memberTabList"
+                     :key="id"
+                     :name="id">
+          <span slot="label"><i class="el-icon-date"></i>{{name}}</span>
+        </el-tab-pane>
+
       </el-tabs>
-      <router-view>
-      </router-view>
+      <div class="ill-container">
+        <router-view>
+        </router-view>
+      </div>
+
     </div>
   </div>
 
@@ -38,12 +50,18 @@
   } from 'vuex'
   export default{
     data(){
-      return {}
+      return {
+        memberActiveTab: ''
+      }
     },
-    beforeCreate(){
+    watch: {
+      '$route'(to,from) {
+        this.setMemberActiveTab(to)
+      }
     },
     created(){
       this.getMemberUser(this.$route.params.userid)
+      this.setMemberActiveTab(this.$route)
     },
     components: {
       PImg
@@ -51,13 +69,19 @@
     computed: {
       ...mapGetters({
         memberUser: 'memberUser',
-        memberTabList: 'memberTabList',
-        memberActiveTab: 'memberActiveTab',
+        memberTabList: 'memberTabList'
       })
+
     },
     methods: {
+      setMemberActiveTab(currentRoute){
+        this.memberActiveTab = currentRoute.meta && currentRoute.meta.activeTab
+      },
       memberRedirect(){
-
+        let userid = this.$route.params.userid
+        let item = this.memberTabList.find(({id}) => id === this.memberActiveTab)
+        console.log(item.getUrl(userid))
+        this.$router.push(item.getUrl(userid))
       },
       ...mapActions({
         getMemberUser: 'getMemberUser'
@@ -67,6 +91,20 @@
 </script>
 
 <style lang="stylus" scoped>
+  .ill-container {
+    min-height 960px
+    padding 50px 0 0 0
+    text-align center
+    background #fff
+    border 1px solid #d1dbe5
+    border-top none
+    box-shadow 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
+  }
+
+  .no-bottom-border {
+    border-bottom none
+  }
+
   .layout-a {
     width: 970px;
     margin: 0 auto;
