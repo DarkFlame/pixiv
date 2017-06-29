@@ -7,7 +7,7 @@ let EventCallback = function (cb) {
     if ((document.body.scrollTop + window.innerHeight) / document.body.scrollHeight > 0.8) {
       cb()
     }
-  },1500)
+  },4000)
 }
 
 Vue.directive('p-scroll',{

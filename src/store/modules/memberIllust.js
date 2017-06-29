@@ -27,7 +27,10 @@ const actions = {
   setMemberIllust({commit},payload){
     commit(types.SET_MEMBER_ILLUST,payload)
   },
-  downloadImgById({commit},payload){
+  setIllustRelated({commit},payload){
+    commit(types.SET_ILLUST_RELATED_LIST,payload)
+  },
+  downloadImgById({},payload){
     return FetchApi.downloadImgById(payload)
   }
 }

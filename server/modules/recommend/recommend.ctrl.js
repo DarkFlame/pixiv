@@ -19,6 +19,11 @@ export async function test(ctx) {
   };
 }
 
+/**
+ * 获取推荐页面的分页信息
+ * @param ctx
+ * @return {Promise.<void>}
+ */
 export async function pages(ctx) {
   let data = null;
   try {

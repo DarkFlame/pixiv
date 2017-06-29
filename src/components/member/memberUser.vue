@@ -54,6 +54,10 @@
         memberActiveTab: ''
       }
     },
+    beforeRouteUpdate(to,from,next){
+      this.initData(to)
+      next()
+    },
     watch: {
       '$route'(to,from) {
         //监听路由 设置tab的memberActiveTab值
@@ -61,9 +65,7 @@
       }
     },
     created(){
-      //初始化左侧用户信息 和 tab
-      this.getMemberUser(this.$route.params.userid)
-      this.setMemberActiveTab(this.$route)
+      this.initData(this.$route)
     },
     components: {
       PImg
@@ -73,16 +75,22 @@
         memberUser: 'memberUser',
         memberTabList: 'memberTabList'
       })
-
     },
     methods: {
+      initData(to){
+        //初始化左侧用户信息 和 tab
+        this.getMemberUser(to.params.userid)
+        this.setMemberActiveTab(to)
+      },
+      removeData(){
+        this.setMemberUser(null)
+      },
       setMemberActiveTab(currentRoute){
         this.memberActiveTab = currentRoute.meta && currentRoute.meta.activeTab
       },
       memberRedirect(){
         let userid = this.$route.params.userid
         let item = this.memberTabList.find(({id}) => id === this.memberActiveTab)
-        console.log(item.getUrl(userid))
         this.$router.push(item.getUrl(userid))
       },
       ...mapActions({
@@ -91,7 +99,7 @@
       })
     },
     beforeDestroy(){
-        this.setMemberUser(null)
+        this.removeData()
     }
   }
 </script>

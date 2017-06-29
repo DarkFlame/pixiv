@@ -39,5 +39,12 @@ export default {
   },
   cancelAxios(){
     return source.cancel('cancel request')
+  },
+  fetchByUrl(url){
+    return axios.post(`/api/fetch`,{
+      url
+    },{
+      cancelToken: source.token
+    })
   }
 }

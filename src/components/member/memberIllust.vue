@@ -1,5 +1,5 @@
 <template>
-  <div class="" v-if="memberIllust">
+  <div v-if="memberIllust">
     <div>
       <div class="ill-work">
         <div class="ill-thumbnail">
@@ -15,7 +15,7 @@
       </a>
     </div>
 
-    <section v-if="illustRelatedList && illustRelatedList.illusts" class="ill-recommend" >
+    <section v-if="illustRelatedList && illustRelatedList.illusts" class="ill-recommend">
       <div class="re_container">
         <h1>推荐</h1>
         <div class="re_card_container" v-for="item in illustRelatedList.illusts">
@@ -53,11 +53,12 @@
     beforeCreate(){
     },
     created(){
-      let pid = this.$route.params.pid
-      this.getMemberIllust(pid)
-      this.getIllustRelated(pid)
+      this.initData(this.$route)
     },
-  
+    beforeRouteUpdate(to,from,next){
+      this.initData(to)
+      next()
+    },
     components: {
       PCard,
       PImg
@@ -69,10 +70,20 @@
       })
     },
     methods: {
+      initData(to){
+        let pid = to.params.pid
+        this.getMemberIllust(pid)
+        this.getIllustRelated(pid)
+      },
+      removeData(){
+        this.setMemberIllust(null)
+        this.setIllustRelated(null)
+      },
       ...mapActions({
         getMemberIllust: 'getMemberIllust',
         getIllustRelated: 'getIllustRelated',
         setMemberIllust: 'setMemberIllust',
+        setIllustRelated: 'setIllustRelated',
       }),
       downloadImgById(){
         let pid = this.$route.params.pid
@@ -86,7 +97,7 @@
       }
     },
     beforeDestroy(){
-      this.setMemberIllust(null)
+      this.removeData()
     }
 
   }
@@ -98,9 +109,9 @@
     position relative
   }
 
-    .ill-recommend{
-      padding 100px 0 0 0
-    }
+  .ill-recommend {
+    padding 100px 0 0 0
+  }
 
   .ill-thumbnail:before {
     background: url(../../assets/thumbnail-depth-large.png) repeat-x 0 0;

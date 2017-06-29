@@ -3,7 +3,7 @@ import {
 } from 'path';
 
 let config = {
-  env: 'development',
+  env: 'production',
   mongodb: {
     url: 'mongodb://127.0.0.1/pixtv'
   },
