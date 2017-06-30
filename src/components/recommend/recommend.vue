@@ -11,7 +11,7 @@
       <div class="re_card_container" v-for="item in recommendList">
         <p-card class="card"
                 :pid="item.id"
-                :pauthor="item.user.name"
+                :pauthor="item.user.account"
                 :pauthorId="item.user.id"
                 :ptitle="item.title"
                 :purl="item.imageUrls.squareMedium">

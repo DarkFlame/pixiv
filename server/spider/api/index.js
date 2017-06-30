@@ -53,7 +53,7 @@ class PixivApi {
 
   //用户收藏列表
   illustBookmarkDetail(id) {
-    return this.pixiv.illustBookmarkDetail(id,{})
+    return this.pixiv.userBookmarksIllust(id,{})
   }
 
   getImgStreamByUrl(imgUrl) {

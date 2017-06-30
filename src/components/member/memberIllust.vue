@@ -15,13 +15,14 @@
       </a>
     </div>
 
-    <section v-if="illustRelatedList && illustRelatedList.illusts" v-p-scroll="getNextIllustRelatedList" class="ill-recommend">
+    <section v-if="illustRelatedList && illustRelatedList.illusts && illustRelatedList.illusts.length>0"
+             v-p-scroll="getNextIllustRelatedList" class="ill-recommend">
       <div class="re_container">
         <h1>推荐</h1>
         <div class="re_card_container" v-for="item in illustRelatedList.illusts">
           <p-card class="card"
                   :pid="item.id"
-                  :pauthor="item.user.name"
+                  :pauthor="item.user.account"
                   :pauthorId="item.user.id"
                   :ptitle="item.title"
                   :purl="item.imageUrls.squareMedium">
@@ -72,8 +73,8 @@
     methods: {
       initData(to){
         let pid = to.params.pid
-        this.getMemberIllust(pid).then((data)=>{
-            this.$store.dispatch('setMemberTags',data && data.tags)
+        this.getMemberIllust(pid).then((data) => {
+          this.$store.dispatch('setMemberTags',data && data.tags)
         })
         this.getIllustRelated(pid)
       },
@@ -90,11 +91,11 @@
       getNextIllustRelatedList(){
         if (!this.illustRelatedList || !this.illustRelatedList.nextUrl) return
         this.getNextPage(this.illustRelatedList.nextUrl).then(({illusts,nextUrl}) => {
-          if (!nextUrl) return this.showNoPageMessage()
           this.setIllustRelated({
             illusts: [...this.illustRelatedList.illusts,...illusts],
             nextUrl
           })
+          if (!nextUrl) return this.showNoPageMessage()
         }).catch(e => {
           this.showNoPageMessage(e && e.message)
         })

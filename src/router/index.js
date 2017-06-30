@@ -8,6 +8,7 @@ const MemberIllust = r => require.ensure([],() => r(require('@/components/member
 const MemberList = r => require.ensure([],() => r(require('@/components/member/memberList')),'test1')
 const MemberUser = r => require.ensure([],() => r(require('@/components/member/memberUser')),'test1')
 const MemberDetail = r => require.ensure([],() => r(require('@/components/member/memberDetail')),'test1')
+const MemberBookmark = r => require.ensure([],() => r(require('@/components/member/memberBookmark')),'test1')
 const NullComponent = {template: '<div>test</div>'}
 Vue.use(Router)
 
@@ -53,6 +54,12 @@ export default new Router({
           component: MemberDetail,
           meta: {
             activeTab: 'detail'
+          }
+        },{
+          path: 'bookmark',
+          component: MemberBookmark,
+          meta: {
+            activeTab: 'bookmark'
           }
         },{
           path: 'list',

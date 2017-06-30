@@ -12,7 +12,8 @@ const state = {
     getUrl: (userId) => `/member/${userId}/list`
   },{
     name: '收藏',
-    id: 'bookmark'
+    id: 'bookmark',
+    getUrl: (userId) => `/member/${userId}/bookmark`
   },{
     name: '动态',
     id: 'dynamic'

@@ -16,7 +16,7 @@
         <div class="re_card_container" v-for="item in searchIllust.illusts">
           <p-card class="card"
                   :pid="item.id"
-                  :pauthor="item.user.name"
+                  :pauthor="item.user.account"
                   :pauthorId="item.user.id"
                   :ptitle="item.title"
                   :purl="item.imageUrls.squareMedium">
@@ -75,10 +75,12 @@
       },
       removeData(){
         this.setSearchIllust(null)
+        this.setBookmark(0)
       },
       ...mapActions({
         getSearchIllust: 'getSearchIllust',
         setSearchIllust: 'setSearchIllust',
+        setBookmark: 'setBookmark',
       }),
       getSearchNextIllust() {
         if (!this.searchIllust || !this.searchIllust.nextUrl) return

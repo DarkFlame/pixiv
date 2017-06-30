@@ -8,7 +8,7 @@
             <p-img
               :purl="memberUser.user.profileImageUrls.medium">
             </p-img>
-            <h1 class="user">{{memberUser.user.name}}</h1>
+            <h1 class="user">{{memberUser.user.account}}</h1>
           </router-link>
         </div>
 

@@ -4,7 +4,7 @@ let util = require('util')
 const apiurl = "http://localhost:9988/api/"
 describe('api',function () {
   it("illustBookmarkDetail",function (done) {
-    let url = apiurl + 'illustBookmarkDetail/61140121'
+    let url = apiurl + 'illustBookmarkDetail/412583'
     let postBody = {
       url: url,
       method: "get",

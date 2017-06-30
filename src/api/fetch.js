@@ -67,6 +67,11 @@ export default {
       cancelToken: source.token
     })
   },
+  getIllustBookmarkDetail(useid){
+    return axios.get(`/api/illustBookmarkDetail/${useid}`,{
+      cancelToken: source.token
+    })
+  },
   getRecommendPages(date){
     return axios.get(`/api/recommend/pages?date=${moment(date).format('YYYY-MM-DD')}`)
   }

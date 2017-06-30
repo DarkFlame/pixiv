@@ -8,6 +8,7 @@ import search from './modules/search'
 import memberIllust from './modules/memberIllust'
 import memberUser from './modules/memberUser'
 import memberList from './modules/memberList'
+import memberBookmark from './modules/member/memberBookmark'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 
@@ -18,6 +19,11 @@ const store = new Vuex.Store({
   actions,
   getters,
   modules: {
+    member: {
+      modules:{
+        memberBookmark
+      }
+    },
     recommend,
     header,
     search,
