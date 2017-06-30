@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-tabs v-model="bookmark" type="card" @tab-click="getSearchIllust">
-      <el-tab-pane label="全部" name="0" ></el-tab-pane>
+      <el-tab-pane label="全部" name="0"></el-tab-pane>
       <el-tab-pane label="10000" name="10000"></el-tab-pane>
       <el-tab-pane label="5000" name="5000"></el-tab-pane>
       <el-tab-pane label="1000" name="1000"></el-tab-pane>
@@ -11,7 +11,7 @@
       <el-tab-pane label="50" name="50"></el-tab-pane>
 
     </el-tabs>
-    <section  class="column-search-result" v-p-scroll="getSearchNextIllust">
+    <section v-if="searchIllust" class="column-search-result" v-p-scroll="getSearchNextIllust">
       <div class="re_container">
         <div class="re_card_container" v-for="item in searchIllust.illusts">
           <p-card class="card"
@@ -24,11 +24,7 @@
           </p-card>
         </div>
       </div>
-      <!--<ul class="_image-items autopagerize_page_element">-->
-        <!--<li v-for="item in searchIllust.illusts" class="image-item">-->
-          <!--<p-card class="image-container" :purl="item.imageUrls.squareMedium"></p-card>-->
-        <!--</li>-->
-      <!--</ul>-->
+
       <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
     </section>
 
@@ -50,12 +46,16 @@
     components: {
       PCard
     },
+    created(){
+      let {keywords} = this.$route.query
+      if (keywords) this.initData(keywords)
+    },
     computed: {
       ...mapGetters({
         searchIllust: 'searchIllust',
         bookmark: 'bookmark'
       }),
-      bookmark:{
+      bookmark: {
         get(){
           return this.$store.state.search.bookmark
         },
@@ -66,14 +66,29 @@
 
     },
     methods: {
+      initData(keywords){
+        if (!keywords) return
+        this.$store.dispatch('setKeywords',keywords)
+        this.getSearchIllust()
+      },
+      removeData(){
+        this.setSearchIllust(null)
+      },
       ...mapActions({
-        getSearchIllust:'getSearchIllust'
+        getSearchIllust: 'getSearchIllust',
+        setSearchIllust: 'setSearchIllust',
       }),
       getSearchNextIllust() {
-        this.$store.dispatch('getSearchNextIllust').then(res=>{
-            if(res && !res.nextUrl) this.$message({message:'已经显示全部图片',duration:4000})
+        this.$store.dispatch('getSearchNextIllust').then(res => {
+          if (res && !res.nextUrl) this.$message({
+            message: '已经显示全部图片',
+            duration: 4000
+          })
         })
       }
+    },
+    beforeDestroy(){
+        this.removeData()
     }
   }
 </script>
@@ -94,17 +109,17 @@
       line-height: 1;
       vertical-align: top;
       color: #555;
-      .image-container{
+      .image-container {
         width: 360px;
         height: 360px;
       }
     }
-      ._no-item{
-        margin: 250px 0;
-        color: #000;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: center;
-      }
+    ._no-item {
+      margin: 250px 0;
+      color: #000;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
   }
 </style>

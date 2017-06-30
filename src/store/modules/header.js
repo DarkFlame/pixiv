@@ -33,6 +33,9 @@ const actions = {
   },
   setKeywords ({commit,state},keywords) {
     commit(types.SET_KEYWORDS,keywords)
+  },
+  setSearchIllust ({commit,state},payload) {
+    commit(types.SET_SEARCH_ILLUST,payload)
   }
 }
 

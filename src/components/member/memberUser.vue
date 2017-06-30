@@ -11,14 +11,24 @@
             <h1 class="user">{{memberUser.user.name}}</h1>
           </router-link>
         </div>
+
+        <div class="area_new user-tags">
+          <div class="area_title">作品标签</div>
+          <div class="area_inside">
+            <router-link v-for="({name},index) in memberTags" :key="name" :to="'/search?keywords='+name">
+              <el-button class="cloud" size="small">{{name}}</el-button>
+            </router-link>
+          </div>
+        </div>
+
+
       </div>
     </div>
     <div class="layout-column-2">
       <el-tabs class="no-bottom-border"
                v-model="memberActiveTab"
                type="border-card"
-               @tab-click="memberRedirect"
-      >
+               @tab-click="memberRedirect">
         <el-tab-pane v-for="({id,name},index) in memberTabList"
                      :key="id"
                      :name="id">
@@ -73,6 +83,7 @@
     computed: {
       ...mapGetters({
         memberUser: 'memberUser',
+        memberTags: 'memberTags',
         memberTabList: 'memberTabList'
       })
     },
@@ -99,7 +110,7 @@
       })
     },
     beforeDestroy(){
-        this.removeData()
+      this.removeData()
     }
   }
 </script>
@@ -131,8 +142,33 @@
       float: left;
       width: 176px;
       .ui-layout-west {
+
         float: left;
         width: 186px;
+
+        .area_new {
+          background-color: #ffffff;
+          border: 1px solid #d6dee5;
+          margin: 0 0 10px 0;
+          position: relative;
+          width: 174px;
+          border-radius: 5px;
+          -moz-border-radius: 5px;
+          .area_title {
+            background: #EEF0F3;
+            margin: 2px;
+            padding: 2px 5px;
+            text-align: left;
+          }
+          .area_inside {
+            padding: 7px;
+            text-align: left;
+            .cloud {
+              margin 0 2px 3px 0
+            }
+          }
+        }
+
         ._unit {
           width: 176px;
           border-radius: 5px;
@@ -151,6 +187,7 @@
             font-weight: bold;
           }
         }
+
       }
     }
   }

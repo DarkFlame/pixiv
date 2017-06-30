@@ -16,14 +16,16 @@ const state = {
   },{
     name: '动态',
     id: 'dynamic'
-  },],
+  }],
   memberUser: null,
+  memberTags: null
 }
 
 // getters
 const getters = {
   memberUser: state => state.memberUser,
   memberTabList: state => state.memberTabList,
+  memberTags: state => state.memberTags
 }
 
 // actions
@@ -34,7 +36,10 @@ const actions = {
     })
   },
   setMemberUser({commit},payload){
-      commit(types.SET_MEMBER_USER,payload)
+    commit(types.SET_MEMBER_USER,payload)
+  },
+  setMemberTags({commit},payload){
+    commit(types.SET_MEMBER_TAGS,payload)
   }
 }
 
@@ -42,6 +47,9 @@ const actions = {
 const mutations = {
   [types.SET_MEMBER_USER](state,payload){
     state.memberUser = payload
+  },
+  [types.SET_MEMBER_TAGS](state,payload){
+    state.memberTags = payload
   }
 }
 

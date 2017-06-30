@@ -19,7 +19,7 @@ axios.interceptors.response.use(function (response) {
   // 处理响应失败
   return Promise.reject(error);
 });
-
+//所有调用api的接口
 export default {
   getFetchId(imgId){
     return axios.get(`/api/fetchById/${imgId}`,{
@@ -44,6 +44,11 @@ export default {
     return axios.post(`/api/fetch`,{
       url
     },{
+      cancelToken: source.token
+    })
+  } ,
+  getUserIllusts(userid){
+    return axios.get(`/api/userIllusts/${userid}`,{
       cancelToken: source.token
     })
   }

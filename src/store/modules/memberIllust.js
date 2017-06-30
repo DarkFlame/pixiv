@@ -17,6 +17,7 @@ const actions = {
   getMemberIllust({commit},payload){
     return FetchApi.getFetchId(payload).then(({data}) => {
       commit(types.SET_MEMBER_ILLUST,data.data)
+      return Promise.resolve(data.data)
     })
   },
   getIllustRelated({commit},payload){

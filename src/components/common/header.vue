@@ -57,6 +57,7 @@
 
   export default {
     name: 'PHeader',
+
     computed: {
       ...mapGetters({
         searchIllust: 'searchIllust'

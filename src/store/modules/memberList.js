@@ -1,6 +1,6 @@
 import * as types from '../mutation-types'
 
-import axios from 'axios'
+import FetchApi from '../../api/fetch'
 const state = {
   memberList: null
 }
@@ -13,7 +13,7 @@ const getters = {
 // actions
 const actions = {
   getMemberList({commit},payload){
-    return axios.get(`/api/userIllusts/${payload}`).then(({data}) => {
+    return FetchApi.getUserIllusts(payload).then(({data}) => {
       commit(types.SET_MEMBER_LIST,data.data)
     })
   },

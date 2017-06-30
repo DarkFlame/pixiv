@@ -15,7 +15,7 @@
       </a>
     </div>
 
-    <section v-if="illustRelatedList && illustRelatedList.illusts" class="ill-recommend">
+    <section v-if="illustRelatedList && illustRelatedList.illusts" v-p-scroll="getNextIllustRelatedList" class="ill-recommend">
       <div class="re_container">
         <h1>推荐</h1>
         <div class="re_card_container" v-for="item in illustRelatedList.illusts">
@@ -44,14 +44,14 @@
   import PCard from '@/components/common/p-card'
   import PImg from '@/components/common/p-img'
   import mime from 'mime-types'
+  import getNextUrlMix from '@/mixins/getNextUrl'
   import {
     mapState,
     mapGetters,
     mapActions
   } from 'vuex'
   export default{
-    beforeCreate(){
-    },
+    mixins: [getNextUrlMix],
     created(){
       this.initData(this.$route)
     },
@@ -72,7 +72,9 @@
     methods: {
       initData(to){
         let pid = to.params.pid
-        this.getMemberIllust(pid)
+        this.getMemberIllust(pid).then((data)=>{
+            this.$store.dispatch('setMemberTags',data && data.tags)
+        })
         this.getIllustRelated(pid)
       },
       removeData(){
@@ -85,6 +87,18 @@
         setMemberIllust: 'setMemberIllust',
         setIllustRelated: 'setIllustRelated',
       }),
+      getNextIllustRelatedList(){
+        if (!this.illustRelatedList || !this.illustRelatedList.nextUrl) return
+        this.getNextPage(this.illustRelatedList.nextUrl).then(({illusts,nextUrl}) => {
+          if (!nextUrl) return this.showNoPageMessage()
+          this.setIllustRelated({
+            illusts: [...this.illustRelatedList.illusts,...illusts],
+            nextUrl
+          })
+        }).catch(e => {
+          this.showNoPageMessage(e && e.message)
+        })
+      },
       downloadImgById(){
         let pid = this.$route.params.pid
         this.$store.dispatch('downloadImgById',pid).then((res) => {

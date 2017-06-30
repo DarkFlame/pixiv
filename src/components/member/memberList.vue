@@ -47,12 +47,12 @@
         if (!this.memberList || !this.memberList.nextUrl) return
         this.getNextPage(this.memberList.nextUrl).then(({illusts,nextUrl}) => {
           if (!nextUrl) return this.showNoPageMessage()
-          this.$store.dispatch('setMemberList',{
+          this.setMemberList({
             illusts: [...this.memberList.illusts,...illusts],
             nextUrl
           })
         }).catch(e => {
-          this.showNoPageMessage()
+          this.showNoPageMessage(e && e.message)
         })
       },
       ...mapActions({

@@ -1,6 +1,5 @@
 import * as types from '../mutation-types'
 
-import axios from 'axios'
 const state = {
   bookmark: 0
 }
