@@ -73,6 +73,8 @@ export default {
     })
   },
   getRecommendPages(date){
-    return axios.get(`/api/recommend/pages?date=${moment(date).format('YYYY-MM-DD')}`)
+    return axios.get(`/api/recommend/pages?date=${moment(date).format('YYYY-MM-DD')}`,{
+      cancelToken: source.token
+    })
   }
 }

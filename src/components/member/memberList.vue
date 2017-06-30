@@ -46,11 +46,11 @@
       getNextMemberList(){
         if (!this.memberList || !this.memberList.nextUrl) return
         this.getNextPage(this.memberList.nextUrl).then(({illusts,nextUrl}) => {
-          if (!nextUrl) return this.showNoPageMessage()
           this.setMemberList({
             illusts: [...this.memberList.illusts,...illusts],
             nextUrl
           })
+          if (!nextUrl) return this.showNoPageMessage()
         }).catch(e => {
           this.showNoPageMessage(e && e.message)
         })
