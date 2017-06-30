@@ -1,7 +1,5 @@
 import * as types from '../mutation-types'
-import moment from 'moment'
-
-import axios from 'axios'
+import FetchApi from '../../api/fetch'
 const state = {
   recommendList: [],
   recommendDate: new Date()
@@ -17,7 +15,7 @@ const getters = {
 const actions = {
   getRecommendList ({commit,state}) {
     let {recommendDate} = state
-    return axios.get(`/api/recommend/pages?date=${moment(recommendDate).format('YYYY-MM-DD')}`).then(({data}) => {
+    return FetchApi.getRecommendPages(recommendDate).then(({data}) => {
       commit(types.SET_RECOMMEND_LIST,{recommendList: data.data})
     })
   },

@@ -6,7 +6,7 @@ let router = Router({
 })
 
 
-router.get('/:keywords', searchKeywords)
+router.get('/', searchKeywords)
 
 
 export default router

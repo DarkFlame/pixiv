@@ -9,8 +9,7 @@ import pixiv from '../../spider/api/index'
  */
 export async function searchKeywords(ctx) {
   let data = null;
-  let {keywords} = ctx.params
-  let {bookmark} = ctx.request.query
+  let {bookmark,keywords} = ctx.request.query
   try {
     data = await pixiv.searchIllust({keywords,bookmark},{
       offset:10

@@ -1,6 +1,6 @@
 import * as types from '../mutation-types'
 
-import axios from 'axios'
+import FetchApi from '../../api/fetch'
 const state = {
   memberTabList: [{
     name: '个人资料',
@@ -31,7 +31,7 @@ const getters = {
 // actions
 const actions = {
   getMemberUser({commit},payload){
-    return axios.get(`/api/userDetail/${payload}`).then(({data}) => {
+    return FetchApi.getUserDetail(payload).then(({data}) => {
       commit(types.SET_MEMBER_USER,data.data)
     })
   },

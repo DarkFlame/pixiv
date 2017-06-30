@@ -16,7 +16,8 @@
           <div class="area_title">作品标签</div>
           <div class="area_inside">
             <router-link v-for="({name},index) in memberTags" :key="name" :to="'/search?keywords='+name">
-              <el-button class="cloud" size="small">{{name}}</el-button>
+              <!--<el-button  size="small">{{name}}</el-button>-->
+              <el-tag class="cloud" type="gray">{{name}}</el-tag>
             </router-link>
           </div>
         </div>
@@ -65,7 +66,7 @@
       }
     },
     beforeRouteUpdate(to,from,next){
-      this.initData(to)
+      this.initData(to,from)
       next()
     },
     watch: {
@@ -88,9 +89,9 @@
       })
     },
     methods: {
-      initData(to){
+      initData(to,from){
         //初始化左侧用户信息 和 tab
-        this.getMemberUser(to.params.userid)
+        if(!from || to.params.userid !== from.params.userid) this.getMemberUser(to.params.userid)
         this.setMemberActiveTab(to)
       },
       removeData(){

@@ -37,12 +37,14 @@
     routerLink
   } from 'vue-router'
   import PCard from '@/components/common/p-card'
+  import getNextUrlMix from '@/mixins/getNextUrl'
   import {
     mapState,
     mapGetters,
     mapActions
   } from 'vuex'
   export default{
+    mixins: [getNextUrlMix],
     components: {
       PCard
     },
@@ -79,11 +81,15 @@
         setSearchIllust: 'setSearchIllust',
       }),
       getSearchNextIllust() {
-        this.$store.dispatch('getSearchNextIllust').then(res => {
-          if (res && !res.nextUrl) this.$message({
-            message: '已经显示全部图片',
-            duration: 4000
+        if (!this.searchIllust || !this.searchIllust.nextUrl) return
+        this.getNextPage(this.searchIllust.nextUrl).then(({illusts,nextUrl}) => {
+          this.setSearchIllust({
+            illusts: [...this.searchIllust.illusts,...illusts],
+            nextUrl
           })
+          if (!nextUrl) return this.showNoPageMessage()
+        }).catch(e => {
+          this.showNoPageMessage(e && e.message)
         })
       }
     },
