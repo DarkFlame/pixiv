@@ -9,7 +9,7 @@ let config = {
     },
     user:{
       username:'879493403@qq.com',
-      password:'qpzmwowo147890'
+      password:'441462'
     },
     allowOrigins: ["http://localhost:9102","http://192.168.10.42:9102","http://localhost:63342","http://localhost:8080","http://localhost:9020"],
     port: 9988,

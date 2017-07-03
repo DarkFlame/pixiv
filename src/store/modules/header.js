@@ -25,13 +25,6 @@ const actions = {
       commit(types.SET_SEARCH_ILLUST, data.data)
     })
   },
-  // getSearchNextIllust ({commit,state,rootState}) {
-  //   if (!state.searchIllust || !state.searchIllust.nextUrl) return Promise.resolve()
-  //   return FetchApi.fetchByUrl(state.searchIllust.nextUrl).then(({data}) => {
-  //     commit(types.CONCAT_SEARCH_ILLUST,{searchIllust: data.data})
-  //     return Promise.resolve(data.data)
-  //   })
-  // },
   setKeywords ({commit,state},keywords) {
     commit(types.SET_KEYWORDS,keywords)
   },
@@ -47,11 +40,7 @@ const mutations = {
   },
   [types.SET_SEARCH_ILLUST] (state,payload) {
     state.searchIllust = payload
-  },
-  // [types.CONCAT_SEARCH_ILLUST] (state,{searchIllust}) {
-  //   state.searchIllust.nextUrl = searchIllust.nextUrl
-  //   state.searchIllust.illusts = state.searchIllust.illusts.concat(searchIllust.illusts)
-  // }
+  }
 }
 
 export default {

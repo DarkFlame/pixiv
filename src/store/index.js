@@ -4,6 +4,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import recommend from './modules/recommend'
 import header from './modules/header'
+import home from './modules/home'
 import search from './modules/search'
 import memberIllust from './modules/memberIllust'
 import memberUser from './modules/memberUser'
@@ -27,6 +28,7 @@ const store = new Vuex.Store({
     recommend,
     header,
     search,
+    home,
     memberUser,
     memberList,
     memberIllust

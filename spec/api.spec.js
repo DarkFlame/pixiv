@@ -3,6 +3,27 @@ let axios = require('axios')
 let util = require('util')
 const apiurl = "http://localhost:9988/api/"
 describe('api',function () {
+  it("fetchById",function (done) {
+    let url = apiurl + 'fetchById/63040569'
+    let postBody = {
+      url: url,
+      method: "get",
+      json: true,
+      forever: true,
+      timeout: 6000,
+      pool: {
+        maxSockets: 10
+      },
+      time: true
+    }
+    axios(postBody).then(({data,status,statusText}) => {
+      console.log(util.inspect(data,true,null,true))
+      expect(status).to.equals(200)
+      expect(statusText).to.equals('OK')
+      done()
+    })
+
+  })
   it("illustBookmarkDetail",function (done) {
     let url = apiurl + 'illustBookmarkDetail/412583'
     let postBody = {

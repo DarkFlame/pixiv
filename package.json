@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "startServer": "nodemon --exec babel-node -- bin/pixtv.js",
+    "startServer": "nodemon  --exec babel-node -- bin/pixtv.js",
     "startServer:prod": "set NODE_ENV=production&& nodemon --exec babel-node -- bin/pixtv.js",
     "testapi": "babel-node ./server/spider/util/recommend",
     "build": "node build/build.js",

@@ -7,11 +7,11 @@ class PixivApi {
     this.BOOKMARK_SUFFIX = 'users入り'
     this.username = user.username
     this.password = user.password
-    this.pixiv = new PixivAppApi()
+    this.pixiv = new PixivAppApi(this.username,this.password)
   }
 
-  illustRanking() {
-    return this.pixiv.illustRanking()
+  illustRanking(params) {
+    return this.pixiv.illustRanking(params)
   }
 
   //作品推荐s
@@ -22,7 +22,6 @@ class PixivApi {
   //标签搜索
   searchIllust({keywords,bookmark},params) {
     let key = !Number(bookmark) ? keywords : keywords + ' ' + bookmark + this.BOOKMARK_SUFFIX;
-    console.log(key)
     return this.pixiv.searchIllust(key,params)
   }
 
@@ -31,19 +30,19 @@ class PixivApi {
     return this.pixiv.fetch(target,{params})
   }
 
-  //作品详情
+  //作品id详情
   illustDetail(id) {
     return this.pixiv.illustDetail(id)
   }
 
-  //用户详情
-  userDetail(id) {
-    return this.pixiv.userDetail(id)
+  //用户id详情
+  userDetail(userId) {
+    return this.pixiv.userDetail(userId)
   }
 
-  //用户作品详情
-  userIllusts(id) {
-    return this.pixiv.userIllusts(id)
+  //用户id作品详情
+  userIllusts(userId) {
+    return this.pixiv.userIllusts(userId)
   }
 
   //作品相关推荐
@@ -52,8 +51,8 @@ class PixivApi {
   }
 
   //用户收藏列表
-  illustBookmarkDetail(id) {
-    return this.pixiv.userBookmarksIllust(id,{})
+  illustBookmarkDetail(userId) {
+    return this.pixiv.userBookmarksIllust(userId,{})
   }
 
   getImgStreamByUrl(imgUrl) {

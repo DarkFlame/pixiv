@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-img :purl="purl"></p-img>
+    <p-img :purl="purl" type="small"></p-img>
     <router-link v-if="pid && pauthorId" :to="'/member/' + pauthorId +  '/Illust/'+ pid">
       <h1 class="title" :title="ptitle">{{ptitle}}</h1>
     </router-link>

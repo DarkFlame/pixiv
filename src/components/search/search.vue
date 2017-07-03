@@ -13,7 +13,7 @@
     </el-tabs>
     <section v-if="searchIllust" class="column-search-result" v-p-scroll="getSearchNextIllust">
       <div class="re_container">
-        <div class="re_card_container" v-for="item in searchIllust.illusts">
+        <div class="re_card_container" v-for="item in searchIllust.illusts" :key="item.key">
           <p-card class="card"
                   :pid="item.id"
                   :pauthor="item.user.account"

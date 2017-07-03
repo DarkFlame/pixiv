@@ -8,7 +8,7 @@
       :picker-options="recommendDateOptions">
     </el-date-picker>
     <div class="re_container">
-      <div class="re_card_container" v-for="item in recommendList">
+      <div class="re_card_container" v-for="item in recommendList" :key="item.key">
         <p-card class="card"
                 :pid="item.id"
                 :pauthor="item.user.account"

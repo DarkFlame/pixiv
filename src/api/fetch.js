@@ -28,6 +28,21 @@ export default {
   cancelAxios(){
     return source.cancel('cancel request')
   },
+  getDayRank(){
+    return axios.get(`/api/rank/day`,{
+      cancelToken: source.token
+    })
+  },
+  getWeekRank(){
+    return axios.get(`/api/rank/week`,{
+      cancelToken: source.token
+    })
+  },
+  getMonthRank(){
+    return axios.get(`/api/rank/month`,{
+      cancelToken: source.token
+    })
+  },
   getFetchId(imgId){
     return axios.get(`/api/fetchById/${imgId}`,{
       cancelToken: source.token

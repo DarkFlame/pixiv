@@ -28,8 +28,11 @@ export async function fetchById(ctx) {
   let data = null;
   let {id} = ctx.params
   try {
+    console.log(id)
     data = await pixiv.illustDetail(id)
+    console.log(data)
   } catch (e) {
+    console.log(e)
     ctx.body = wrapBody(e)
   }
   ctx.body = wrapBody(null,data && data.illust)
@@ -46,7 +49,7 @@ export async function illustBookmarkDetail(ctx) {
   try {
     console.log(id)
     data = await pixiv.illustBookmarkDetail(id)
-    console.log(data)
+
   } catch (e) {
     console.log(e)
     ctx.body = wrapBody(e)
@@ -64,7 +67,7 @@ export async function userDetail(ctx) {
   try {
     console.log(id)
     data = await pixiv.userDetail(id)
-    console.log(data)
+
   } catch (e) {
     console.log(e)
     ctx.body = wrapBody(e)
@@ -100,7 +103,7 @@ export async function illustRelated(ctx) {
   try {
     console.log(id)
     data = await pixiv.illustRelated(id)
-    console.log(data)
+
   } catch (e) {
     console.log(e)
     ctx.body = wrapBody(e)

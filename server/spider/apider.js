@@ -3,7 +3,7 @@ import {CronJob} from 'cron'
 class IllustRankingCron {
   constructor() {
     this.fire().then((res) => {
-      console.log(res)
+
     })
   }
   async fire() {

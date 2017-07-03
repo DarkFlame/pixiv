@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img v-bind:src="'/'+ purl"/>
+    <img v-bind="widthObj" v-bind:src="'/'+ purl"/>
   </div>
 
 </template>
@@ -12,10 +12,21 @@
     props: {
       purl: {
         type: String
+      },
+      type: {
+        type: String
       }
     },
     data: function () {
       return {}
+    },
+    computed: {
+      widthObj: function () {
+        return this.type === 'small' ? {
+          width: 150,
+          height: 150
+        } : {}
+      }
     }
   }
 </script>
