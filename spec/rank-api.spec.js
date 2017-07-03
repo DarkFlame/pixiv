@@ -47,7 +47,7 @@ describe('api',function () {
 
   })
 
- it("rankWeek",function (done) {
+  it("rankWeek",function (done) {
     let url = apiurl + 'rank/week'
     let postBody = {
       url: url,
@@ -67,6 +67,68 @@ describe('api',function () {
       done()
     })
 
+  })
+  it("day_male",function (done) {
+    let url = apiurl + 'rank/day_male'
+    let postBody = {
+      url: url,
+      method: "get",
+      json: true,
+      forever: true,
+      timeout: 6000,
+      pool: {
+        maxSockets: 10
+      },
+      time: true
+    }
+    axios(postBody).then(({data,status,statusText}) => {
+      console.log(util.inspect(data,true,null,true))
+      expect(status).to.equals(200)
+      expect(statusText).to.equals('OK')
+      done()
+    })
+
+  })
+
+  it("day_female",function (done) {
+    let url = apiurl + 'rank/day_female'
+    let postBody = {
+      url: url,
+      method: "get",
+      json: true,
+      forever: true,
+      timeout: 6000,
+      pool: {
+        maxSockets: 10
+      },
+      time: true
+    }
+    axios(postBody).then(({data,status,statusText}) => {
+      console.log(util.inspect(data,true,null,true))
+      expect(status).to.equals(200)
+      expect(statusText).to.equals('OK')
+      done()
+    })
+  })
+  it("day_manga",function (done) {
+    let url = apiurl + 'rank/day_manga'
+    let postBody = {
+      url: url,
+      method: "get",
+      json: true,
+      forever: true,
+      timeout: 6000,
+      pool: {
+        maxSockets: 10
+      },
+      time: true
+    }
+    axios(postBody).then(({data,status,statusText}) => {
+      console.log(util.inspect(data,true,null,true))
+      expect(status).to.equals(200)
+      expect(statusText).to.equals('OK')
+      done()
+    })
   })
 
 

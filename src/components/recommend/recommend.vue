@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="re_wrapper">
     <el-date-picker
       v-model="recommendDate"
       align="left"
@@ -95,6 +95,7 @@
   }
 </script>
 <style lang="stylus" scoped>
+
 
   .date-link {
     padding 10px 0

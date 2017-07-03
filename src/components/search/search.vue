@@ -1,32 +1,35 @@
 <template>
-  <div>
-    <el-tabs v-model="bookmark" type="card" @tab-click="getSearchIllust">
-      <el-tab-pane label="全部" name="0"></el-tab-pane>
-      <el-tab-pane label="10000" name="10000"></el-tab-pane>
-      <el-tab-pane label="5000" name="5000"></el-tab-pane>
-      <el-tab-pane label="1000" name="1000"></el-tab-pane>
-      <el-tab-pane label="500" name="500"></el-tab-pane>
-      <el-tab-pane label="300" name="300"></el-tab-pane>
-      <el-tab-pane label="100" name="100"></el-tab-pane>
-      <el-tab-pane label="50" name="50"></el-tab-pane>
+  <div class="re_wrapper">
+    <div v-if="searchIllust">
+      <el-tabs v-model="bookmark" type="card" @tab-click="getSearchIllust">
+        <el-tab-pane label="全部" name="0"></el-tab-pane>
+        <el-tab-pane label="10000" name="10000"></el-tab-pane>
+        <el-tab-pane label="5000" name="5000"></el-tab-pane>
+        <el-tab-pane label="1000" name="1000"></el-tab-pane>
+        <el-tab-pane label="500" name="500"></el-tab-pane>
+        <el-tab-pane label="300" name="300"></el-tab-pane>
+        <el-tab-pane label="100" name="100"></el-tab-pane>
+        <el-tab-pane label="50" name="50"></el-tab-pane>
 
-    </el-tabs>
-    <section v-if="searchIllust" class="column-search-result" v-p-scroll="getSearchNextIllust">
-      <div class="re_container">
-        <div class="re_card_container" v-for="item in searchIllust.illusts" :key="item.key">
-          <p-card class="card"
-                  :pid="item.id"
-                  :pauthor="item.user.account"
-                  :pauthorId="item.user.id"
-                  :ptitle="item.title"
-                  :purl="item.imageUrls.squareMedium">
+      </el-tabs>
+      <section class="column-search-result" v-p-scroll="getSearchNextIllust">
+        <div class="re_container">
+          <div class="re_card_container" v-for="item in searchIllust.illusts" :key="item.key">
+            <p-card class="card"
+                    :pid="item.id"
+                    :pauthor="item.user.account"
+                    :pauthorId="item.user.id"
+                    :ptitle="item.title"
+                    :purl="item.imageUrls.squareMedium">
 
-          </p-card>
+            </p-card>
+          </div>
         </div>
-      </div>
 
-      <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
-    </section>
+        <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
+      </section>
+    </div>
+    <div v-if="!searchIllust" class="search-tip">请输入关键词</div>
 
   </div>
 </template>
@@ -96,7 +99,7 @@
       }
     },
     beforeDestroy(){
-        this.removeData()
+      this.removeData()
     }
   }
 </script>
@@ -129,5 +132,14 @@
       line-height: 20px;
       text-align: center;
     }
+  }
+
+  .search-tip {
+    text-align center
+    min-height 720px
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top 250px
   }
 </style>

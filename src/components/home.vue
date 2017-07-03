@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="dayRank">
+    <div class="re_wrapper" v-if="dayRank">
       <h1>日排行榜单</h1>
       <div class="re_container">
         <div class="re_card_container" v-for="item in dayRank.illusts" :key="item.key">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div  v-if="weekRank">
+    <div  class="re_wrapper" v-if="weekRank">
       <h1>周排行榜单</h1>
       <div class="re_card_container" v-for="item in weekRank.illusts" :key="item.key">
         <p-card class="card"
@@ -26,7 +26,7 @@
         </p-card>
       </div>
     </div>
-    <div  v-if="monthRank">
+    <div class="re_wrapper"  v-if="monthRank">
       <h1>月排行榜单</h1>
       <div class="re_card_container" v-for="item in monthRank.illusts" :key="item.key">
         <p-card class="card"
@@ -56,13 +56,13 @@
       return {}
     },
     created(){
-        this.initData()
+      this.initData()
     },
     components: {
       PHeader,
       PCard
     },
-    computed:{
+    computed: {
       ...mapGetters({
         dayRank: 'dayRank',
         weekRank: 'weekRank',
@@ -86,21 +86,21 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
+  /*.re_wrapper {*/
+    /*border-radius: 5px;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid #d6dee5;*/
+    /*margin: 10px 0;*/
+    /*padding: 0*/
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
+  /*}*/
+  .re_wrapper h1{
+    border-radius: 2px 2px 0 0;
+    margin: 2px 2px 0;
+    padding: 0 5px;
+    line-height: 2;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #eef0f3;
   }
 </style>

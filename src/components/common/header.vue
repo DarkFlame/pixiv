@@ -92,7 +92,7 @@
     }
     .layout-wrapper {
       position: relative;
-      width: 970px;
+      width: 972px;
       height: 115px;
       margin: 0 auto;
     }

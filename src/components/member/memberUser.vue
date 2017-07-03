@@ -132,7 +132,7 @@
   }
 
   .layout-a {
-    width: 970px;
+    width: 972px;
     margin: 0 auto;
     padding: 10px 0;
     .layout-column-2 {

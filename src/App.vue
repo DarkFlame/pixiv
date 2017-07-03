@@ -51,7 +51,7 @@
   }
 
   .layout-body {
-    width: 970px;
+    width: 972px;
     margin: 0 auto;
   }
 
