@@ -3,7 +3,7 @@
     <div class="re_wrapper" v-if="dayRank">
       <h1>日排行榜单</h1>
       <div class="re_container">
-        <div class="re_card_container" v-for="item in dayRank.illusts" :key="item.key">
+        <div class="re_card_container" v-for="item in displayDayRankIllusts" :key="item.key">
           <p-card class="card"
                   :pid="item.id"
                   :pauthor="item.user.account"
@@ -16,7 +16,7 @@
     </div>
     <div  class="re_wrapper" v-if="weekRank">
       <h1>周排行榜单</h1>
-      <div class="re_card_container" v-for="item in weekRank.illusts" :key="item.key">
+      <div class="re_card_container" v-for="item in displayWeekRankIllusts" :key="item.key">
         <p-card class="card"
                 :pid="item.id"
                 :pauthor="item.user.account"
@@ -28,7 +28,7 @@
     </div>
     <div class="re_wrapper"  v-if="monthRank">
       <h1>月排行榜单</h1>
-      <div class="re_card_container" v-for="item in monthRank.illusts" :key="item.key">
+      <div class="re_card_container" v-for="item in displayMonthRankIllusts" :key="item.key">
         <p-card class="card"
                 :pid="item.id"
                 :pauthor="item.user.account"
@@ -49,7 +49,7 @@
     mapGetters,
     mapActions
   } from 'vuex'
-
+  const DISPLAY_TOP = 10
   export default {
     name: 'home',
     data () {
@@ -67,7 +67,16 @@
         dayRank: 'dayRank',
         weekRank: 'weekRank',
         monthRank: 'monthRank',
-      })
+      }),
+      displayDayRankIllusts(){
+          return this.dayRank.illusts.slice(0,DISPLAY_TOP)
+      },
+      displayWeekRankIllusts(){
+          return this.weekRank.illusts.slice(0,DISPLAY_TOP)
+      },
+      displayMonthRankIllusts(){
+          return this.monthRank.illusts.slice(0,DISPLAY_TOP)
+      }
     },
     methods: {
       initData(){

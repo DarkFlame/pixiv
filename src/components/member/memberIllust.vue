@@ -18,7 +18,7 @@
     <section v-if="illustRelatedList && illustRelatedList.illusts && illustRelatedList.illusts.length>0"
              v-p-scroll="getNextIllustRelatedList" class="ill-recommend">
       <div class="re_container">
-        <h1>推荐</h1>
+        <h1>相关推荐</h1>
         <div class="re_card_container" v-for="item in illustRelatedList.illusts">
           <p-card class="card"
                   :pid="item.id"
@@ -163,6 +163,15 @@
   .ill-download:hover {
     background-color: #008fea;
     text-decoration: none;
+  }
+  .re_container h1{
+    border-radius: 2px 2px 0 0;
+    margin: 2px 2px 0;
+    padding: 0 5px;
+    line-height: 2;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #eef0f3;
   }
 
 </style>

@@ -22,7 +22,6 @@ axios.interceptors.response.use(function (response) {
 });
 
 
-
 //所有调用api的接口
 export default {
   cancelAxios(){

@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div v-if="!searchIllust.illusts" class="_no-item">未找到任何相关结果</div>
+        <div v-if="!searchIllust.illusts || searchIllust.illusts.length===0" class="_no-item">未找到任何相关结果</div>
       </section>
     </div>
     <div v-if="!searchIllust" class="search-tip">请输入关键词</div>

@@ -7,13 +7,20 @@ import clientConfig from '../config'
 import router from './router'
 import koaBody from 'koa-body'
 import logger from 'koa-logger'
+import compress  from 'koa-compress'
 import util from 'util'
 import http from 'http'
 import serve from 'koa-static'
 import path from 'path'
 
 const app = new Koa()
-
+app.use(compress({
+  // filter: function (content_type) {
+  //   return /text/i.test(content_type)
+  // },
+  threshold: 2048,
+  flush: require('zlib').Z_SYNC_FLUSH
+}))
 /**
  * body解析
  */
