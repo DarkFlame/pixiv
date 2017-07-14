@@ -3,11 +3,12 @@
 > A Vue.js project search pixiv
 一个使用vue2、koa2、mongodb搭建的对p站图片搜索展示
 线上地址: http://123.206.184.165/
+[github地址](https://github.com/sunyue1992/pixiv/)
 
 ## 快速开始
 - 需要Node.js 8+版本
 - 需要安装mongodb,并且运行mongodb服务,在`server/configs/config.development.js`(由config.default.js改名)中设置链接
-- 如果自己开发，需要在config文件中配置p站自己的账号
+- 如果自己开发，需要在config文件中配置自己p站的账号
 
 ## npm run
 
@@ -65,4 +66,7 @@ npm run deploy
 ## 参考资料
 1. [Vuejs项目的Webpack2构建优化](https://molunerfinn.com/Webpack-Optimize/)
 2. [一个使用vue2、koa2、mongodb搭建的单用户博客](https://github.com/BUPT-HJM/vue-blog/)
+3. [p站接口爬虫](https://github.com/akameco/pixiv-app-api/)
+4. [vue-cli](https://github.com/vuejs/vue-cli/)
+
 
