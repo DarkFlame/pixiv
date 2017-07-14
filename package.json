@@ -1,8 +1,8 @@
 {
-  "name": "demo",
+  "name": "pixiv",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "sun.yue <sun.yue@chiefclouds.com>",
+  "description": "pixiv for search",
+  "author": "lawliet-yue <879493403@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
