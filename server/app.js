@@ -3,17 +3,23 @@ import convert from 'koa-convert'
 import error from 'koa-error'
 import cors from 'koa-cors'
 import config from './config'
-import clientConfig from '../config'
+// import clientConfig from '../config'
 import router from './router'
 import koaBody from 'koa-body'
 import logger from 'koa-logger'
 import compress  from 'koa-compress'
-import util from 'util'
+import c2k from 'koa2-connect'
+import history from 'connect-history-api-fallback'
 import http from 'http'
 import serve from 'koa-static'
 import path from 'path'
 
 const app = new Koa()
+
+app.use(c2k(history({
+  verbose: true
+})));
+
 app.use(compress({
   // filter: function (content_type) {
   //   return /text/i.test(content_type)
@@ -70,12 +76,12 @@ router(app)
 /**
  * 把webpack build好的文件设置为koa的静态文件目录 实现生产环境下的前后端端口一致
  */
+console.log('assets serve dir' + path.join(__dirname,'../'))
+app.use(serve(path.join(__dirname,'../')))
 
-app.use(serve(clientConfig.build.assetsRoot))
-
-module.exports = function createServerApp(){
+module.exports = function createServerApp() {
   console.log(config)
-  return http.createServer(app.callback()).listen(config.port, function(){
-    console.info('listen on', config.port)
+  return http.createServer(app.callback()).listen(config.port,function () {
+    console.info('listen on',config.port)
   })
 }

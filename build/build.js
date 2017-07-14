@@ -9,7 +9,7 @@ var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
-
+const fs = require('fs-extra')
 var spinner = ora('building for production...')
 spinner.start()
 
@@ -25,7 +25,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       chunks: false,
       chunkModules: false
     }) + '\n\n')
-
+    buildServerFile()
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +
@@ -33,3 +33,8 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     ))
   })
 })
+
+function buildServerFile(){
+  fs.copySync(path.join(__dirname,'../process.json'), path.join(config.build.assetsRoot,'process.json'))
+  fs.copySync(path.join(__dirname,'../package.json'), path.join(config.build.assetsRoot,'package.json'))
+}

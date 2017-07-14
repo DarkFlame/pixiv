@@ -1,14 +1,19 @@
 {
   "apps": [
     {
-      "name": "test",
-      "script":"./test.js",
+      "name": "pixtv",
+      "script":"./bin/pixtv.js",
       "watch":false,
       "env_production":{
         "NODE_ENV": "production"
-      },
-      "env_development":{
-        "NODE_ENV": "development"
+      }
+    } ,
+    {
+      "name": "pixtv_spider",
+      "script":"./server/spider/apider.js",
+      "watch":false,
+      "env_production":{
+        "NODE_ENV": "production"
       }
     }
   ]
