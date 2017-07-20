@@ -1,4 +1,5 @@
 import {CronJob} from 'cron'
+import DownloadRecommend from './util/recommend'
 
 class IllustRankingCron {
   constructor() {
@@ -6,12 +7,13 @@ class IllustRankingCron {
 
     })
   }
+
   async fire() {
     new CronJob({
       cronTime: "0 0 */24 * * *",
       onTick: () => {
         try {
-          console.log('执行tagValueSync时间',new Date())
+          new DownloadRecommend();
         } catch (err) {
         }
       },
@@ -21,6 +23,6 @@ class IllustRankingCron {
   }
 }
 
-if(require.main === module){
-    new IllustRankingCron()
+if (require.main === module) {
+  new IllustRankingCron()
 }
