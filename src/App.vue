@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+
+
   import PHeader from './components/common/header.vue'
   import {
     routerView,
