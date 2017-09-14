@@ -3,8 +3,8 @@ import {throttle} from 'lodash'
 
 let EventCallback = function (cb) {
   return throttle((e) => {
-    console.log('getNextUrl')
-    if ((document.body.scrollTop + window.innerHeight) / document.body.scrollHeight > 0.8) {
+    console.log((document.body.scrollTop + window.innerHeight) / document.body.scrollHeight)
+    if ((document.body.scrollTop + window.innerHeight) / document.body.scrollHeight > 0.4) {
       cb()
     }
   },4000)
