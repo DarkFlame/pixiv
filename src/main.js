@@ -12,6 +12,7 @@ import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 Vue.prototype.$http = Axios
 Vue.config.productionTip = false
+
 sync(store, router)
 /* eslint-disable no-new */
 new Vue({
