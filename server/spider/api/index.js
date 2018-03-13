@@ -16,7 +16,7 @@ class PixivApi {
 
   //作品推荐s
   illustRecommendedNologin() {
-    return this.pixiv.illustRecommendedNologin()
+    return this.pixiv.illustRecommended()
   }
 
   //标签搜索

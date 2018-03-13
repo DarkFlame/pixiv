@@ -15,6 +15,7 @@ export async function rank(ctx) {
     console.log(require('util').inspect(data,true,null,true))
 
   } catch (e) {
+    console.log(e)
     ctx.body = wrapBody(e)
   }
   ctx.body = wrapBody(null,data)

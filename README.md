@@ -62,7 +62,7 @@ npm run deploy
 
 
 ```
-
+![](test.gif)
 ## 参考资料
 1. [Vuejs项目的Webpack2构建优化](https://molunerfinn.com/Webpack-Optimize/)
 2. [一个使用vue2、koa2、mongodb搭建的单用户博客](https://github.com/BUPT-HJM/vue-blog/)

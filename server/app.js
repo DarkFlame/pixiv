@@ -78,7 +78,6 @@ router(app)
  */
 console.log('assets serve dir' + path.join(__dirname,'../'))
 app.use(serve(path.join(__dirname,'../')))
-
 module.exports = function createServerApp() {
   console.log(config)
   return http.createServer(app.callback()).listen(config.port,function () {
